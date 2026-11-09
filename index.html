@@ -445,6 +445,72 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .map-wrap.shake{animation:shake .6s}
 @keyframes shake{0%,100%{transform:none}20%{transform:translate(-6px,3px)}40%{transform:translate(5px,-4px)}60%{transform:translate(-4px,-2px)}80%{transform:translate(3px,2px)}}
 @media(max-width:900px){.how-grid{grid-template-columns:1fr}}
+
+/* ---------- v6: Bauzeiten, Slots, Stabilität ---------- */
+.slots{display:flex;flex-direction:column;gap:6px}
+.slot{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:start;background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:10px 11px}
+.slot .g{font:1.05rem var(--mono);color:var(--accent);text-align:center;padding-top:1px}
+.slot b{display:block;font-size:.84rem;font-weight:500}
+.slot small{display:block;color:var(--muted);font-size:.7rem;line-height:1.35;margin-top:2px}
+.slot .lvl{margin:6px 0 0}
+.slot .btn-row{margin-top:8px}
+.slot .btn-row .button{padding:7px 10px;font-size:.7rem}
+.slot.empty{border-style:dashed;opacity:.55}
+.slot.empty .g{color:var(--muted2)}
+.slot.building{border-color:rgba(79,240,210,.35)}
+.slot.building .g{color:#4ff0d2}
+.cbar{display:block;height:5px;border-radius:3px;background:var(--line);margin-top:7px;overflow:hidden}
+.cbar i{display:block;height:100%;background:linear-gradient(90deg,#4ff0d2,#9af7e6);transition:width .4s}
+.opt .cost{text-align:right;line-height:1.35}
+.stabbar{height:8px;border-radius:4px;background:var(--line);overflow:hidden;margin:4px 0 8px}
+.stabbar i{display:block;height:100%;transition:width .4s}
+.aebox{margin-top:12px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface2)}
+.aebox .mt{display:flex;justify-content:space-between;font:.7rem var(--mono);color:var(--muted)}
+.aebox small{display:block;font-size:.7rem;color:var(--muted);line-height:1.4}
+.diffs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:0 30px 14px}
+.diffs small{flex-basis:100%;font:.62rem var(--mono);color:var(--muted2)}
+.tech.active{border-color:#4ff0d2;background:linear-gradient(160deg,rgba(79,240,210,.14),var(--surface2))}
+.tech.active .tc{color:#4ff0d2}
+.tech.busy{opacity:.55;cursor:not-allowed}
+@media(max-width:560px){.diffs{padding:0 20px 14px}}
+.res{gap:18px}.res div{min-width:54px}
+
+/* ---------- v7: Politik, Ereignisse, Ticker ---------- */
+.board{height:calc(100vh - 76px - 86px - 40px);height:calc(100dvh - 76px - 86px - 40px)}
+.ticker{display:flex;align-items:center;gap:12px;height:30px;margin-bottom:10px;border:1px solid var(--line);background:var(--surface);overflow:hidden;font:.68rem var(--mono);color:var(--muted)}
+.ticker>b{flex:none;height:100%;display:grid;place-items:center;padding:0 12px;background:var(--accent);color:#170b05;letter-spacing:.1em}
+.ticker .tk{flex:1;overflow:hidden;white-space:nowrap;-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
+.ticker .tkin{display:inline-block;animation:tick 70s linear infinite;padding-left:10px}
+.ticker .tkin i{font-style:normal;color:var(--accent);margin:0 14px}
+.ticker .bad{color:#ff8a80}
+@keyframes tick{to{transform:translateX(-50%)}}
+.polcat{margin-top:12px;border:1px solid var(--line);border-radius:8px;padding:10px;background:var(--surface2)}
+.pch{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.pch b{font-size:.86rem;font-weight:600}
+.pch small{font:.6rem var(--mono);color:var(--yellow)}
+.polopts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.polopt{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:8px 9px;transition:.2s}
+.polopt:hover:not(:disabled){border-color:var(--line2)}
+.polopt.on{border-color:var(--accent);background:linear-gradient(140deg,rgba(255,122,61,.15),var(--surface));cursor:default}
+.polopt:disabled:not(.on){opacity:.5;cursor:not-allowed}
+.polopt b{display:block;font-size:.78rem;font-weight:500}
+.polopt small{display:block;font:.6rem/1.35 var(--mono);color:var(--muted);margin-top:3px}
+.risks{border-top:1px solid var(--line)}
+.risks div{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font:11px var(--mono);color:var(--muted)}
+.risks b{font-weight:500;text-transform:uppercase;letter-spacing:.05em}
+.combos{display:flex;flex-direction:column;gap:6px}
+.combo{border:1px solid var(--line);border-radius:6px;padding:8px 10px;background:var(--surface2);opacity:.7}
+.combo.on{opacity:1}
+.combo.good{border-color:rgba(109,255,155,.35)}.combo.good b{color:var(--green)}
+.combo.bad{border-color:rgba(255,95,86,.35)}.combo.bad b{color:#ff8a80}
+.combo b{display:block;font-size:.8rem;font-weight:500}
+.combo small{display:block;font:.62rem/1.35 var(--mono);color:var(--muted);margin-top:2px}
+.choices{display:flex;flex-direction:column;gap:8px;margin-top:20px}
+.choice{text-align:left;background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:12px 14px;transition:.2s}
+.choice:hover{border-color:var(--accent);transform:translateX(3px)}
+.choice b{display:block;font-size:.95rem;font-weight:600}
+.choice small{display:block;font:.68rem/1.4 var(--mono);color:var(--accent2);margin-top:4px}
+@media(max-width:900px){.board{height:auto}.polopts{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -517,7 +583,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
     </div>
     <div class="how-grid">
       <div class="glass-card"><span class="big-icon">▲</span><h3>Armeen &amp; Fronten</h3><p>Wähle eine Armee und tippe auf das Ziel. Treffen feindliche Armeen aufeinander, kämpfen sie, bis eine Seite die Moral verliert und sich zurückzieht. Verluste werden in eigenem Gebiet automatisch aufgefüllt.</p></div>
-      <div class="glass-card"><span class="big-icon">★</span><h3>Aufträge, Ränge &amp; Erfolge</h3><p>Erfülle laufend neue Aufträge, steige vom Stammesführer zum Unsterblichen auf, knacke die Kriegskasse und sammle 18 Erfolge – einige davon geheim.</p></div>
+      <div class="glass-card"><span class="big-icon">⚖</span><h3>Präsident sein</h3><p>Entscheide über Energie, Wirtschaft, Militär, Medien und Gesundheit. Über 100 Ereignisse verlangen Entscheidungen – und manche Kombinationen enden in der Katastrophe.</p></div>
       <div class="glass-card"><span class="big-icon">☢</span><h3>Forschung &amp; Atomwaffen</h3><p>Schulen liefern Forschungspunkte für Wirtschaft, Bildung und das Atomprogramm. Atomschläge vernichten Armeen und verstrahlen Land – doch jede Bombe rückt die Weltuntergangsuhr näher an Mitternacht.</p></div>
       <div class="glass-card" hidden><span class="big-icon">■</span><h3>Belagerung &amp; Kriegsziele</h3><p>Steht deine Armee allein in einer feindlichen Provinz, wird sie belagert und besetzt. Besetzte Provinzen erhöhen den Kriegspunktestand – damit forderst du im Friedensvertrag Gebiete oder Gold.</p></div>
       <div class="glass-card"><span class="big-icon">☭ ♛ ⚖</span><h3>Ideologie &amp; Diplomatie</h3><p>Werde Monarchie, Demokratie, kommunistisch, Theokratie oder Militärregime – jede Staatsform bringt eigene Boni. Und wer die meisten Schulen hat, darf die sagenumwobene ⚛ Technokratie ausrufen – die beste Ideologie der Welt.</p></div>
@@ -539,6 +605,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
       <button class="button" data-a="menu">Menü</button>
     </div>
   </div>
+  <div class="ticker" id="ticker" aria-live="polite"></div>
   <div class="board">
     <section class="map-card" aria-label="Weltkarte">
       <div class="terminal-bar"><span class="d1">●</span><span class="d2">●</span><span class="d3">●</span><b>world.map</b>
@@ -559,7 +626,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
   </div>
 </main>
 
-<footer class="wrap"><span>© OLIVER · IMPERIUM v5.0</span><span>KARTENDATEN: NATURAL EARTH VIA APACHE ECHARTS</span><span>[ SPIELSTAND WIRD LOKAL GESPEICHERT ]</span></footer>
+<footer class="wrap"><span>© OLIVER · IMPERIUM v7.0</span><span>KARTENDATEN: NATURAL EARTH VIA APACHE ECHARTS</span><span>[ SPIELSTAND WIRD LOKAL GESPEICHERT ]</span></footer>
 
 <div class="modal" id="modal" hidden><div class="modal-inner" id="modalInner" role="dialog" aria-modal="true"></div></div>
 <div class="floating-card toast" id="toast" hidden></div>
@@ -1263,12 +1330,18 @@ function portraitSVG(iso, opts = {}) {
 }
 /* ================= IMPERIUM · Spiellogik (Armeen, Belagerung, Kriegsziele) ================= */
 const BLD = {
-  farm:    {n:'Bauernhof', g:'≋', cost:35, d:'+1500 Rekruten pro Runde'},
-  market:  {n:'Markt',     g:'◇', cost:45, d:'+3 Gold pro Runde, je 2 Märkte +1 Einfluss'},
-  factory: {n:'Fabrik',    g:'▣', cost:70, d:'+5 Gold pro Runde'},
-  barracks:{n:'Kaserne',   g:'▲', cost:55, d:'+1 Militärpunkt, Armeen hier verstärken doppelt so schnell'},
-  fort:    {n:'Festung',   g:'■', cost:60, d:'Belagerung dauert +3 Monate, Verteidiger +50 %'},
-  school:  {n:'Schule',    g:'✎', cost:50, d:'+1 Einfluss, je 2 Schulen +1 Militärpunkt, zählt für die Bildungs-Rangliste'},
+  farm:    {n:'Bauernhof', g:'≋', cost:80,  time:2, up:0, d:'+1500 Rekruten pro Monat'},
+  market:  {n:'Markt',     g:'◇', cost:110, time:3, up:0, d:'+4 Gold, je 2 Stufen +1 Einfluss'},
+  factory: {n:'Fabrik',    g:'▣', cost:170, time:5, up:1, d:'+8 Gold'},
+  barracks:{n:'Kaserne',   g:'▲', cost:130, time:3, up:1, d:'+1 Militärpunkt, Armeen hier verstärken schneller'},
+  fort:    {n:'Festung',   g:'■', cost:160, time:6, up:2, d:'Belagerung +2 Monate, Verteidiger stärker'},
+  school:  {n:'Schule',    g:'✎', cost:140, time:4, up:1, d:'+2 Forschung, +1 Einfluss, je 2 Stufen +1 Militärpunkt'},
+};
+const SLOTS = 3;
+const DIFF = {
+  easy:   {n:'Leicht', d:'Mehr Startgold, KI zurückhaltend',          ai:1.0, start:1.3, agg:0.6, coal:0.5},
+  normal: {n:'Normal', d:'KI mit +20 % Gold, Koalitionen gegen Eroberer', ai:1.2, start:1.0, agg:1.2, coal:1.0},
+  hard:   {n:'Schwer', d:'KI mit +50 % Gold, aggressiv, schnelle Koalitionen', ai:1.5, start:0.7, agg:1.8, coal:1.6},
 };
 const BKEYS = Object.keys(BLD);
 const BRANCHES = ['Angriff','Verteidigung','Logistik'];
@@ -1305,7 +1378,8 @@ const SCI = [
 const SCIT = Object.fromEntries(SCI.map(t => [t.id, t]));
 const NUKE_STATES = {US:8, RU:8, CN:4, FR:3, GB:3, IN:2, PK:2, IL:2, KP:1};
 const TAX = {low:{n:'Niedrig', gold:.85, man:1.2, infl:1, d:'−15 % Gold, +20 % Rekruten, +1 Einfluss'}, mid:{n:'Normal', gold:1, man:1, infl:0, d:'Ausgeglichen'}, high:{n:'Hoch', gold:1.25, man:.8, infl:-1, d:'+25 % Gold, −20 % Rekruten, −1 Einfluss'}};
-const NUKE_COST = 300, DOOM_MAX = 10;
+const NUKE_COST = 400, DOOM_MAX = 8;
+const sciTime = t => 2 + Math.round(t.cost / 12), milTime = t => 1 + Math.round(t.cost / 3);
 const RIVALS = [['GR','TR',-25],['IN','PK',-40],['KR','KP',-50],['AM','AZ',-40],['CN','TW',-40],['IL','IR',-40],['RU','UA',-40],['MA','DZ',-20],['FR','GB',-10],['PE','CL',-10],['ET','ER',-30],['SD','SS',-25]];
 const IDEOS = {
   rep:{n:'Republik',      g:'◎', col:'#7f8fa6', d:'Ausgewogen: +10 % Gold, +1 Einfluss', fx:{goldPct:.1, infl:1}},
@@ -1344,14 +1418,14 @@ function log(txt, cls = '') { S.log.push({t: S.turn, txt, cls}); if (S.log.lengt
 function event(ev) { EVQ.push(ev); }
 
 /* ---------- Spielstart ---------- */
-function newGame(player) {
+function newGame(player, diff = 'normal') {
   const P = G.provs;
-  S = {v:5, stats:{}, xp:0, lvl:1, missions:[], mdone:0, doom:0, winter:0, hist:[], retal:[], lv:P.map(() => 0), rad:P.map(() => 0), np:P.length, turn:1, player, own:P.map(p => p.c), ctl:P.map(p => p.c), bld:P.map(() => null), sg:P.map(() => null),
+  S = {v:7, news:[], lessons:[], evSeen:{}, diff, ae:0, coalT:0, cons:[], muster:[], stats:{}, xp:0, lvl:1, missions:[], mdone:0, doom:0, winter:0, hist:[], retal:[], lv:P.map(() => 0), rad:P.map(() => 0), np:P.length, turn:1, player, own:P.map(p => p.c), ctl:P.map(p => p.c), bld:P.map(() => []), sg:P.map(() => null),
        n:{}, armies:[], nextA:1, rel:{}, war:{}, truce:{}, ally:{}, trade:{}, log:[], won:false, battles:[]};
   for (const c of G.codes) {
     const N = NATIONS[c];
-    S.n[c] = {gold: 80 + N.tier * 30, man: 0, mil: 2, infl: 3, techs: [], alive: true, cap: G.countries[c].cap, lastOffer: 0, ideo: startIdeo(c), ideoT: -99, fp: 0, sci: NUKE_STATES[c] ? ['n1','n2','n3'] : [], nukes: NUKE_STATES[c] || 0, tax: 'mid', econ: null};
-    S.bld[G.countries[c].cap] = 'market'; S.lv[G.countries[c].cap] = 1;
+    S.n[c] = {gold: Math.round((60 + N.tier * 20) * (c === player ? DIFF[diff].start : 1)), stab: 60, sciP: null, milP: null, pol: defaultPol(c), mods: [], polT: {}, man: 0, mil: 2, infl: 3, techs: [], alive: true, cap: G.countries[c].cap, lastOffer: 0, ideo: startIdeo(c), ideoT: -99, fp: 0, sci: NUKE_STATES[c] ? ['n1','n2','n3'] : [], nukes: NUKE_STATES[c] || 0, tax: 'mid', econ: null};
+    S.bld[G.countries[c].cap] = [{b: 'market', lv: 1}];
   }
   recount();
   for (const c of G.codes) {
@@ -1378,12 +1452,12 @@ function spawnArmy(c, p, men) {
 /* ---------- Zählen & Modifikatoren ---------- */
 function recount() {
   const cnt = {};
-  for (const c of G.codes) cnt[c] = {provs:0, ctl:0, coast:0, farm:0, market:0, factory:0, barracks:0, fort:0, school:0, rad:0, val:0, men:0, armies:0, sx:0, sy:0, w:0, area:0};
+  for (const c of G.codes) cnt[c] = {provs:0, ctl:0, coast:0, farm:0, market:0, factory:0, barracks:0, fort:0, school:0, rad:0, bup:0, val:0, men:0, armies:0, sx:0, sy:0, w:0, area:0};
   const P = G.provs;
   for (let i = 0; i < P.length; i++) {
     const o = S.own[i], c = cnt[o]; if (!c) continue;
     c.provs++; c.val += P[i].val; c.area += P[i].area; const w = Math.sqrt(P[i].area) + 1; c.sx += P[i].x * w; c.sy += P[i].y * w; c.w += w;
-    if (S.ctl[i] === o) { c.ctl++; if (S.rad[i] > 0) c.rad++; if (P[i].coast) c.coast++; const b = S.bld[i]; if (b && !(S.rad[i] > 0)) c[b] += S.lv[i] || 1; }
+    if (S.ctl[i] === o) { c.ctl++; if (S.rad[i] > 0) c.rad++; if (P[i].coast) c.coast++; if (!(S.rad[i] > 0)) for (const x of S.bld[i]) { c[x.b] += x.lv; c.bup += BLD[x.b].up * x.lv; } }
   }
   for (const a of S.armies) if (cnt[a.o]) { cnt[a.o].men += a.men; cnt[a.o].armies++; }
   S.cnt = cnt;
@@ -1392,7 +1466,7 @@ function fx(c, k) {
   let v = (ARCH[NATIONS[c].arch].fx[k] || 0) + (IDEOS[ideoOf(c)].fx[k] || 0);
   for (const t of S.n[c].techs) v += TECH[t].fx[k] || 0;
   for (const t of S.n[c].sci || []) v += SCIT[t].fx[k] || 0;
-  return v;
+  return v + polFx(c, k);
 }
 const maxMor = c => 1 + fx(c, 'mor');
 const rel = (a, b) => a === b ? 100 : (S.rel[K(a, b)] || 0);
@@ -1410,51 +1484,94 @@ const seaRange = c => SEA_RANGE * (fx(c, 'naval') ? 2.5 : 1);
 
 function income(c) {
   const cnt = S.cnt[c], N = NATIONS[c], P = G.provs;
-  if (fx(c, 'noIncome')) { const up = Math.ceil(cnt.men / 3000); return {gold: 0, upkeep: up, net: -up, man: 0, mil: 0, infl: 0, fp: 0, manCap: 0, parts: {}}; }
-  const n = S.n[c], tax = TAX[n.tax || 'mid'], econ = n.econ && n.econ.until > S.turn ? n.econ.m : 0, winter = S.winter > S.turn ? 0.5 : 1;
+  if (fx(c, 'noIncome')) { const up = Math.ceil(cnt.men / 2500); return {gold: 0, upkeep: up, net: -up, man: 0, mil: 0, infl: 0, fp: 0, manCap: 0, parts: {}}; }
+  const n = S.n[c], tax = TAX[n.tax || 'mid'], econ = n.econ && n.econ.until > S.turn ? n.econ.m : 0, winter = S.winter > S.turn ? 0.4 : 1;
   let base = 0;
   for (let i = 0; i < P.length; i++) if (S.own[i] === c && S.ctl[i] === c && !(S.rad[i] > 0)) base += 1 + N.tier;
-  let gold = 3 + base + cnt.market * 3 + cnt.factory * (5 + fx(c, 'factoryGold')) + cnt.coast * fx(c, 'coastGold') + tradeCount(c) * (3 + fx(c, 'tradeGold'));
-  const parts = {base, market: cnt.market * 3, factory: cnt.factory * (5 + fx(c, 'factoryGold')), trade: tradeCount(c) * (3 + fx(c, 'tradeGold'))};
-  gold = Math.round(gold * (1 + fx(c, 'goldPct') + econ) * tax.gold * winter);
-  const upkeep = Math.ceil(cnt.men / 3000);
-  const man = Math.round(((cnt.ctl - cnt.rad) * 500 + cnt.farm * (1500 + fx(c, 'farmBonus'))) * (1 + fx(c, 'manPct')) * tax.man * winter);
+  const sm = 0.75 + (n.stab ?? 60) / 200, ai = isP(c) ? 1 : DIFF[S.diff || 'normal'].ai;
+  let gold = 3 + base + cnt.market * 4 + cnt.factory * (8 + fx(c, 'factoryGold')) + cnt.coast * fx(c, 'coastGold') + tradeCount(c) * (3 + fx(c, 'tradeGold'));
+  const parts = {base, market: cnt.market * 4, factory: cnt.factory * (8 + fx(c, 'factoryGold')), trade: tradeCount(c) * (3 + fx(c, 'tradeGold'))};
+  gold = Math.round(gold * Math.max(0.1, 1 + fx(c, 'goldPct') + econ) * tax.gold * winter * sm * ai);
+  const armyUp = Math.ceil(cnt.men / 2500 * (1 + fx(c, 'armyUp'))), bup = Math.ceil(cnt.bup * (fx(c, 'bupHalf') ? 0.5 : 1));
+  const upkeep = armyUp + bup;
+  const man = Math.round(sm * ((cnt.ctl - cnt.rad) * 500 + cnt.farm * (1500 + fx(c, 'farmBonus'))) * Math.max(0.1, 1 + fx(c, 'manPct')) * tax.man * winter);
   const mil = 1 + cnt.barracks + Math.floor(cnt.school / 2) + fx(c, 'mil');
   const infl = Math.max(0, 1 + Math.floor(cnt.market / 2) + cnt.school * (1 + fx(c, 'schoolInfl')) + fx(c, 'infl') + tax.infl);
-  const fp = Math.round((1 + cnt.school * (2 + fx(c, 'schoolFP'))) * (1 + fx(c, 'fpPct')) * 10) / 10;
-  return {gold, upkeep, net: gold - upkeep, man, mil, infl, fp, manCap: cnt.provs * 8000 + 15000, parts, econ, winter: winter < 1};
+  const fp = Math.round((1 + cnt.school * (2 + fx(c, 'schoolFP'))) * Math.max(0.1, 1 + fx(c, 'fpPct')) * 10) / 10;
+  return {gold: Math.max(0, gold), upkeep, armyUp, bup, net: gold - upkeep, man, mil, infl, fp, manCap: cnt.provs * 8000 + 15000, parts, econ, winter: winter < 1, sm};
 }
 const buildCost = (c, b) => Math.round(BLD[b].cost * (1 - fx(c, 'buildCost')));
-const raiseCost = (c, men) => Math.ceil(men / 250 * (1 - fx(c, 'raiseCheap')));
+const raiseCost = (c, men) => Math.ceil(men / 150 * (1 - fx(c, 'raiseCheap')));
 
 /* ---------- Wirtschaft & Militär ---------- */
+const bList = p => S.bld[p] || [];
+const hasB = (p, b) => bList(p).some(x => x.b === b);
+const bLv = (p, b) => (bList(p).find(x => x.b === b) || {lv: 0}).lv;
+const consAt = p => S.cons.find(k => k.p === p);
+const consOf = c => S.cons.filter(k => k.c === c);
+const maxCons = c => 2 + Math.floor(S.cnt[c].provs / 6) + fx(c, 'consSlots');
+const buildTime = (c, b, lv) => Math.max(1, Math.round((BLD[b].time + (lv - 1) * 2) * (1 - fx(c, 'buildSpeed'))));
+const upgradeCost = (c, p, b) => Math.round(buildCost(c, b) * 1.75 * bLv(p, b));
+function canBuildHere(c, p) { return S.own[p] === c && S.ctl[p] === c && !(S.rad[p] > 0) && !consAt(p) && consOf(c).length < maxCons(c); }
 function build(c, p, b) {
   const n = S.n[c], cost = buildCost(c, b);
-  if (S.own[p] !== c || S.ctl[p] !== c || S.bld[p] || n.gold < cost) return false;
-  n.gold -= cost; S.bld[p] = b; S.lv[p] = 1; recount();
-  if (isP(c)) { log(`${BLD[b].n} in ${G.provs[p].name} gebaut.`); ST('built'); if (b === 'school') ST('schools'); }
+  if (!canBuildHere(c, p) || hasB(p, b) || bList(p).length >= SLOTS || n.gold < cost) return false;
+  const t = buildTime(c, b, 1);
+  n.gold -= cost; S.cons.push({c, p, b, lv: 1, left: t, total: t, paid: cost});
+  if (isP(c)) log(`Baubeginn: ${BLD[b].n} in ${G.provs[p].name} (${t} ${t === 1 ? 'Monat' : 'Monate'}).`);
   return true;
 }
-function demolish(c, p) { if (S.own[p] !== c || !S.bld[p]) return false; S.bld[p] = null; S.lv[p] = 0; recount(); return true; }
-const upgradeCost = (c, p) => Math.round(buildCost(c, S.bld[p]) * 1.5 * (S.lv[p] || 1));
-function upgrade(c, p) {
-  const n = S.n[c]; if (S.own[p] !== c || S.ctl[p] !== c || !S.bld[p] || (S.lv[p] || 1) >= 3 || S.rad[p] > 0) return false;
-  const cost = upgradeCost(c, p); if (n.gold < cost) return false;
-  n.gold -= cost; S.lv[p] = (S.lv[p] || 1) + 1; recount();
-  if (isP(c)) { log(`${BLD[S.bld[p]].n} in ${G.provs[p].name} auf Stufe ${S.lv[p]} ausgebaut.`); ST('upgrades'); if (S.lv[p] === 3) ST('maxed'); }
+function upgrade(c, p, b) {
+  const n = S.n[c], lv = bLv(p, b);
+  if (!canBuildHere(c, p) || !lv || lv >= 3) return false;
+  const cost = upgradeCost(c, p, b); if (n.gold < cost) return false;
+  const t = buildTime(c, b, lv + 1);
+  n.gold -= cost; S.cons.push({c, p, b, lv: lv + 1, left: t, total: t, paid: cost});
+  if (isP(c)) log(`Ausbau begonnen: ${BLD[b].n} in ${G.provs[p].name} auf Stufe ${lv + 1} (${t} Monate).`);
   return true;
+}
+function cancelCons(c, p) {
+  const k = consAt(p); if (!k || k.c !== c) return false;
+  S.n[c].gold += Math.round(k.paid / 2); S.cons = S.cons.filter(x => x !== k); return true;
+}
+function demolish(c, p, b) { if (S.own[p] !== c || !hasB(p, b) || (consAt(p) && consAt(p).b === b)) return false; S.bld[p] = bList(p).filter(x => x.b !== b); recount(); return true; }
+function progressCons() {
+  const done = [];
+  for (const k of S.cons) {
+    if (S.own[k.p] !== k.c) { k.dead = true; continue; }
+    if (S.ctl[k.p] !== k.c || S.rad[k.p] > 0) continue; // pausiert
+    if (--k.left <= 0) done.push(k);
+  }
+  for (const k of done) {
+    const ex = bList(k.p).find(x => x.b === k.b);
+    if (ex) ex.lv = k.lv; else if (bList(k.p).length < SLOTS) S.bld[k.p].push({b: k.b, lv: 1});
+    k.dead = true;
+    if (isP(k.c)) {
+      log(k.lv === 1 ? `${BLD[k.b].n} in ${G.provs[k.p].name} fertiggestellt.` : `${BLD[k.b].n} in ${G.provs[k.p].name} auf Stufe ${k.lv} ausgebaut.`, 'ok');
+      if (k.lv === 1) { ST('built'); if (k.b === 'school') ST('schools'); } else { ST('upgrades'); if (k.lv === 3) ST('maxed'); }
+      FXQ.push({p: k.p, k: 'build'});
+    }
+  }
+  S.cons = S.cons.filter(k => !k.dead);
 }
 function sciState(c, t) {
   const n = S.n[c];
   if (n.sci.includes(t.id)) return 'done';
+  if (n.sciP && n.sciP.id === t.id) return 'active';
   if (!t.req.every(r => n.sci.includes(r))) return 'locked';
+  if (n.sciP) return 'busy';
   return n.fp >= t.cost ? 'ready' : 'poor';
 }
 function researchSci(c, id) {
   const t = SCIT[id]; if (sciState(c, t) !== 'ready') return false;
-  S.n[c].fp -= t.cost; S.n[c].sci.push(id);
-  if (isP(c)) { log(`Forschung abgeschlossen: ${t.name.replace(/­/g, '')} (${t.d}).`, 'ok'); ST('sci'); }
+  S.n[c].fp -= t.cost; S.n[c].sciP = {id, left: sciTime(t), total: sciTime(t)};
+  if (isP(c)) log(`Forschung gestartet: ${t.name.replace(/­/g, '')} (${sciTime(t)} Monate).`);
   return true;
+}
+function progressProjects(c) {
+  const n = S.n[c];
+  if (n.sciP && --n.sciP.left <= 0) { const t = SCIT[n.sciP.id]; n.sci.push(t.id); n.sciP = null; if (isP(c)) { log(`Forschung abgeschlossen: ${t.name.replace(/­/g, '')} (${t.d}).`, 'ok'); ST('sci'); } }
+  if (n.milP && --n.milP.left <= 0) { const t = TECH[n.milP.id]; n.techs.push(t.id); n.milP = null; if (isP(c)) { log(`Militärreform umgesetzt: ${t.name.replace(/­/g, '')} (${t.d}).`, 'ok'); ST('techs'); } }
 }
 function setTax(c, t) { if (!TAX[t]) return false; S.n[c].tax = t; return true; }
 /* ---------- Atomwaffen ---------- */
@@ -1474,24 +1591,33 @@ function launchNuke(c, p) {
   if (!canNuke(c, p)) return false;
   const n = S.n[c], P = G.provs, h = fx(c, 'hbomb');
   n.nukes--;
-  const zone = [[p, 0.9, 24]]; if (h) for (const q of P[p].nb) zone.push([q, 0.5, 12]);
+  const zone = [[p, 1, 60]]; if (h) { for (const q of P[p].nb) zone.push([q, 0.7, 36]); }
   let killed = 0;
   for (const [q, f, m] of zone) {
     for (const a of S.armies) if (a.p === q) { const l = Math.round(a.men * f); killed += l; a.men -= l; a.mor = Math.max(0, a.mor - f); }
-    if (f > 0.8 || Math.random() < 0.5) { S.bld[q] = null; S.lv[q] = 0; }
+    if (f > 0.8) S.bld[q] = []; else S.bld[q] = bList(q).filter(() => Math.random() < 0.3);
+    S.cons = S.cons.filter(k => k.p !== q);
     S.rad[q] = Math.max(S.rad[q], m); S.sg[q] = null;
     FXQ.push({p: q, k: f > 0.8 ? 'nuke' : 'fallout'});
   }
   S.armies = S.armies.filter(a => a.men >= 200);
   const victim = S.own[p] === c ? S.ctl[p] : S.own[p];
   const w = S.war[K(c, victim)]; if (w) w.bs[c] = Math.min(40, (w.bs[c] || 0) + 12);
-  for (const x of alive()) if (x !== c) addRel(x, c, x === victim ? -60 : -25);
-  S.doom = Math.min(DOOM_MAX, S.doom + (h ? 2 : 1)); S.doomT = S.turn;
+  for (const x of alive()) if (x !== c) addRel(x, c, x === victim ? -100 : -40);
+  if (victim && S.n[victim]) { const v = S.n[victim]; v.stab = Math.max(0, (v.stab ?? 60) - 30); v.man = Math.round(v.man * 0.6); v.gold = Math.round(v.gold * 0.75); }
+  if (!['mil'].includes(n.ideo) && polOf(c).media !== 'censor') n.stab = Math.max(0, (n.stab ?? 60) - 10);
+  if (!isP(c)) news(`☢ ${nm(c)} setzt Atomwaffen gegen ${nm(victim)} ein`, 'bad');
+  if (isP(c) && Math.random() < 0.5) {
+    const hunters = alive().filter(x => x !== c && x !== victim && !atWar(x, c) && !S.ally[K(x, c)] && rel(x, c) < -30 && nationNeighbors(c).has(x)).slice(0, 4);
+    if (hunters.length) { for (const x of hunters) declareWar(x, c); event({kind: 'coalition', members: hunters, nuke: true}); }
+  }
+  S.doom = Math.min(DOOM_MAX, S.doom + (h ? 3 : 2)); S.doomT = S.turn;
   log(`☢ ${nm(c)} zündet eine ${h ? 'Wasserstoffbombe' : 'Atombombe'} über ${P[p].name} (${fmtMen(killed)} Soldaten ausgelöscht).`, isP(c) || isP(victim) ? 'bad' : '');
-  if (isP(c)) ST('nukesUsed');
+  if (isP(c)) { ST('nukesUsed'); S.ae = (S.ae || 0) + 15; }
   if (isP(victim)) event({kind:'nukeHit', from: c, p});
-  if (victim && S.n[victim] && S.n[victim].nukes > 0 && fx(victim, 'nuke') && !isP(victim)) S.retal.push({by: victim, vs: c});
-  if (S.doom >= DOOM_MAX && !(S.winter > S.turn)) { S.winter = S.turn + 24; ST('winter'); event({kind:'winter'}); log('☢ Nuklearer Winter: Ernten fallen aus, die Weltwirtschaft halbiert sich für 2 Jahre.', 'bad'); }
+  if (victim && S.n[victim] && S.n[victim].nukes > 0 && fx(victim, 'nuke') && !isP(victim)) S.retal.push({by: victim, vs: c}, {by: victim, vs: c});
+  if (victim) for (const x of allies(victim)) if (x !== c && !isP(x) && S.n[x].nukes > 0) { if (!atWar(x, c)) declareWar(x, c); S.retal.push({by: x, vs: c}); }
+  if (S.doom >= DOOM_MAX && !(S.winter > S.turn)) { S.winter = S.turn + 36; ST('winter'); event({kind:'winter'}); news('☢ Nuklearer Winter: Ernten fallen aus, die Weltwirtschaft bricht für 3 Jahre ein', 'bad'); for (const x of alive()) { S.n[x].stab = Math.max(0, (S.n[x].stab ?? 60) - 20); S.n[x].man = Math.round(S.n[x].man * 0.5); } }
   recount();
   return true;
 }
@@ -1503,13 +1629,26 @@ function nukeTarget(by, vs) {
   return best;
 }
 function canRaise(c, p) { return S.own[p] === c && S.ctl[p] === c && !armiesAt(p).some(a => atWar(a.o, c)); }
+const musterTime = c => Math.max(1, 2 - fx(c, 'raiseFast'));
+const musterOf = c => S.muster.filter(m => m.c === c);
 function raiseArmy(c, p, men) {
   const n = S.n[c], g = raiseCost(c, men);
   if (!canRaise(c, p) || n.man < men || n.gold < g || men < 1000) return null;
   n.man -= men; n.gold -= g;
-  const a = spawnArmy(c, p, men); recount();
-  if (isP(c)) { log(`Neue Armee (${fmtMen(men)}) in ${G.provs[p].name} ausgehoben.`, 'ok'); ST('raised'); }
-  return a;
+  const m = {c, p, men, left: musterTime(c), total: musterTime(c)}; S.muster.push(m);
+  if (isP(c)) { log(`Rekrutierung in ${G.provs[p].name}: ${fmtMen(men)} Soldaten, einsatzbereit in ${m.left} ${m.left === 1 ? 'Monat' : 'Monaten'}.`); ST('raised'); }
+  return m;
+}
+function progressMuster() {
+  for (const m of S.muster) {
+    if (--m.left > 0) continue;
+    m.dead = true;
+    let at = canRaise(m.c, m.p) ? m.p : (S.n[m.c].cap >= 0 && canRaise(m.c, S.n[m.c].cap) ? S.n[m.c].cap : -1);
+    if (at < 0) { S.n[m.c].man += m.men; continue; }
+    spawnArmy(m.c, at, m.men);
+    if (isP(m.c)) { log(`Neue Armee (${fmtMen(m.men)}) in ${G.provs[at].name} einsatzbereit.`, 'ok'); FXQ.push({p: at, k: 'build'}); }
+  }
+  S.muster = S.muster.filter(m => !m.dead);
 }
 function mergeArmies(c, p) {
   const list = S.armies.filter(a => a.o === c && a.p === p); if (list.length < 2) return null;
@@ -1528,13 +1667,15 @@ function disband(a) { S.armies = S.armies.filter(x => x !== a); S.n[a.o].man += 
 function techState(c, t) {
   const n = S.n[c];
   if (n.techs.includes(t.id)) return 'done';
+  if (n.milP && n.milP.id === t.id) return 'active';
   if (!t.req.every(r => n.techs.includes(r))) return 'locked';
+  if (n.milP) return 'busy';
   return n.mil >= t.cost ? 'ready' : 'poor';
 }
 function research(c, id) {
   const t = TECH[id]; if (techState(c, t) !== 'ready') return false;
-  S.n[c].mil -= t.cost; S.n[c].techs.push(id);
-  if (isP(c)) { log(`Militärreform: ${t.name.replace('­', '')} (${t.d}).`, 'ok'); ST('techs'); }
+  S.n[c].mil -= t.cost; S.n[c].milP = {id, left: milTime(t), total: milTime(t)};
+  if (isP(c)) log(`Militärreform gestartet: ${t.name.replace(/­/g, '')} (${milTime(t)} Monate).`);
   return true;
 }
 const fmtMen = m => m >= 1000 ? (m / 1000).toFixed(m >= 100000 ? 0 : 1).replace('.0', '') + 'k' : String(m);
@@ -1604,7 +1745,7 @@ function sidePower(p, side, defending) {
   let pow = 0;
   for (const a of side) {
     let m = a.men * clamp(a.mor, 0.05, 3) * (1 + fx(a.o, 'atk'));
-    if (defending) { m *= 1.2 * (1 + fx(a.o, 'def')); if (S.bld[p] === 'fort') m *= 1.5 + fx(S.ctl[p] || a.o, 'fortBonus') * 0.5; }
+    if (defending) { m *= 1.2 * (1 + fx(a.o, 'def')); if (hasB(p, 'fort')) m *= 1.3 + 0.15 * bLv(p, 'fort') + fx(S.ctl[p] || a.o, 'fortBonus') * 0.5; }
     pow += m;
   }
   return pow;
@@ -1651,7 +1792,7 @@ function retreat(a) {
 function siegeNeed(p, by) {
   const c = S.ctl[p];
   let t = 1;
-  if (S.bld[p] === 'fort') t += 1 + 2 * (S.lv[p] || 1) + Math.round(fx(c, 'fortBonus') * 2);
+  if (hasB(p, 'fort')) t += 2 * bLv(p, 'fort') + Math.round(fx(c, 'fortBonus') * 2);
   if (S.n[c] && S.n[c].cap === p) t += 1;
   t -= fx(by, 'siege');
   return Math.max(1, t);
@@ -1700,6 +1841,8 @@ const indemnity = loser => Math.max(30, income(loser).gold * 6);
 function declareWar(a, b) {
   const k = K(a, b);
   if (a === b || atWar(a, b) || !S.n[b].alive || (S.truce[k] || 0) > S.turn) return false;
+  if (isP(a) && fx(a, 'neutral')) return false;
+  if (!isP(a)) news(`${nm(a)} greift ${nm(b)} an`, isP(b) ? 'bad' : '');
   const breach = !!(S.ally[k] || S.trade[k] || rel(a, b) > 30);
   delete S.ally[k]; delete S.trade[k];
   S.war[k] = {since: S.turn, bs: {[a]: 0, [b]: 0}};
@@ -1726,7 +1869,7 @@ function applyPeace(a, b, give = {}, gold = 0, payer = null) {
   const moved = [];
   for (const [to, provs] of Object.entries(give)) for (const p of provs) {
     const from = S.own[p]; if (from === to) continue;
-    S.own[p] = to; S.ctl[p] = to; S.sg[p] = null; moved.push(p); if (!S.bld[p]) S.lv[p] = 0; if (isP(to)) { ST('conquered'); FXQ.push({p, k:'occ'}); }
+    S.own[p] = to; S.ctl[p] = to; S.sg[p] = null; moved.push(p); if (isP(to)) { ST('conquered'); FXQ.push({p, k:'occ'}); S.ae = (S.ae || 0) + 6 + (G.countries[from] && G.countries[from].cap === p ? 6 : 0); }
     if (S.n[from].cap === p) S.n[from].cap = -1;
   }
   for (let i = 0; i < S.own.length; i++) if ((S.own[i] === a && S.ctl[i] === b) || (S.own[i] === b && S.ctl[i] === a)) { S.ctl[i] = S.own[i]; S.sg[i] = null; }
@@ -1755,7 +1898,7 @@ function eliminate(c, by) {
   for (const x of G.codes) { delete S.war[K(c, x)]; delete S.ally[K(c, x)]; delete S.trade[K(c, x)]; }
   for (let i = 0; i < S.own.length; i++) { if (S.own[i] === c) { S.own[i] = by; S.ctl[i] = by; } if (S.ctl[i] === c) S.ctl[i] = S.own[i]; }
   S.armies = S.armies.filter(a => a.o !== c);
-  if (isP(by)) ST('annexed');
+  if (isP(by)) { ST('annexed'); S.ae = (S.ae || 0) + 20; }
   log(`${NATIONS[c].name} wurde von ${nm(by)} annektiert.`, isP(c) ? 'bad' : isP(by) ? 'ok' : '');
   if (isP(c)) event({kind:'defeat'});
   else if (isP(by)) event({kind:'info', title:`${NATIONS[c].name} annektiert`, body:`${NATIONS[c].leader}s Reich gehört jetzt zu deinem. Alle Provinzen sind dir unterstellt.`});
@@ -1801,7 +1944,7 @@ function canChangeIdeo(c, id) {
 }
 function changeIdeology(c, id, now = S.turn, free = false) {
   if (!IDEOS[id] || (!free && !canChangeIdeo(c, id))) return false;
-  const n = S.n[c], old = n.ideo; if (!free) n.infl -= IDEO_COST; n.ideo = id; n.ideoT = S.turn;
+  const n = S.n[c], old = n.ideo; if (!free) n.infl -= IDEO_COST; n.ideo = id; n.ideoT = S.turn; if (!free) n.stab = Math.max(0, (n.stab ?? 60) - 20);
   if (id === 'tec') { n.tecStart = now; n.gold = n.man = n.mil = n.infl = n.fp = INF; if (isP(c)) ST('techno'); }
   if (isP(c)) ST('ideoChanges');
   for (const x of alive()) if (x !== c) { if (ideoOf(x) === id) addRel(c, x, 10); else if (ideoOf(x) === old) addRel(c, x, -10); }
@@ -1876,28 +2019,29 @@ function aiTurn(c) {
   const rs = SCI.filter(t => sciState(c, t) === 'ready' && (t.br < 2 || NUKE_STATES[c] || (N.tier >= 4 && Math.random() < 0.1)));
   if (rs.length && Math.random() < 0.6) researchSci(c, pick(rs).id);
   if (fx(c, 'nuke') && n.nukes < (NUKE_STATES[c] ? 10 : 2) && n.gold > nukeCost(c) + 400 && Math.random() < 0.06) buildNuke(c);
-  if (n.gold > 250 && Math.random() < 0.3) { const up = []; for (let i = 0; i < S.own.length; i++) if (S.own[i] === c && S.bld[i] && (S.lv[i] || 1) < 3 && S.ctl[i] === c && !(S.rad[i] > 0)) up.push(i); if (up.length) upgrade(c, pick(up)); }
+  if (n.gold > 400 && Math.random() < 0.25) { const up = []; for (let i = 0; i < S.own.length; i++) if (S.own[i] === c && canBuildHere(c, i)) for (const x of bList(i)) if (x.lv < 3) up.push([i, x.b]); if (up.length) upgrade(c, ...pick(up)); }
   if (n.nukes > 0 && atwar && Math.random() < 0.03) {
     for (const e of wars) if (warScore(c, e) <= -40) { const t = nukeTarget(c, e); if (t >= 0) { launchNuke(c, t); break; } }
   }
   const ready = TECHS.filter(t => techState(c, t) === 'ready');
   if (ready.length && Math.random() < 0.7) research(c, pick(ready).id);
   // Bauen
-  for (let k = 0; k < (n.gold > 300 ? 3 : 1); k++) {
+  for (let k = 0; k < (n.gold > 500 ? 2 : 1); k++) {
     let b;
     if (atwar && Math.random() < 0.3) b = 'fort';
     else if (cnt.barracks < 1 + Math.floor(cnt.provs / 8) && Math.random() < 0.35) b = 'barracks';
     else if (n.man < 8000 && Math.random() < 0.5) b = 'farm';
     else b = pick(['factory','factory','market','market','farm','school']);
-    const cost = buildCost(c, b); if (n.gold < cost + (atwar ? 40 : 25)) break;
-    const empty = []; for (let i = 0; i < S.own.length; i++) if (S.own[i] === c && S.ctl[i] === c && !S.bld[i]) empty.push(i);
-    if (!empty.length) break;
-    build(c, pick(empty), b);
+    const cost = buildCost(c, b); if (n.gold < cost + (atwar ? 60 : 40)) break;
+    const spots = []; for (let i = 0; i < S.own.length; i++) if (S.own[i] === c && canBuildHere(c, i) && !hasB(i, b) && bList(i).length < SLOTS) spots.push(i);
+    if (!spots.length) break;
+    build(c, pick(spots), b);
   }
   // Rekrutieren
   const target = Math.max(5000, cnt.provs * 4000 * (0.7 + N.tier * 0.12) * (atwar ? 1.4 : 1));
-  if (cnt.men < target * 0.85 && cnt.armies < 6) {
-    let men = Math.min(n.man, target - cnt.men, 20000, (n.gold - 15) * 250 / (1 - fx(c, 'raiseCheap')));
+  const pend = musterOf(c).reduce((s2, m) => s2 + m.men, 0);
+  if (cnt.men + pend < target * 0.85 && cnt.armies < 6) {
+    let men = Math.min(n.man, target - cnt.men - pend, 20000, (n.gold - 30) * 150 / (1 - fx(c, 'raiseCheap')));
     men = Math.floor(men / 1000) * 1000;
     if (men >= 3000) {
       let at = n.cap >= 0 && canRaise(c, n.cap) ? n.cap : -1;
@@ -1925,9 +2069,10 @@ function aiTurn(c) {
   // Kriegserklärung
   const activeWars = Object.keys(S.war).length;
   if (Math.random() < 0.002 && S.turn > 12) { const id = pick(IDEO_KEYS); if (id !== n.ideo && n.infl >= IDEO_COST) changeIdeology(c, id); }
-  if (!atwar && S.turn > 6 && activeWars < 8 && Math.random() < 0.012 * (n.ideo === 'mil' ? 2 : 1)) {
+  const dv = DIFF[S.diff || 'normal'];
+  if (!atwar && S.turn > 6 && activeWars < 16 && Math.random() < 0.02 * dv.agg * (n.ideo === 'mil' ? 2 : 1) * (n.stab < 30 ? 0.5 : 1)) {
     const cands = nb.filter(x => !S.ally[K(c, x)] && (S.truce[K(c, x)] || 0) <= S.turn && rel(c, x) < 0
-      && S.cnt[x].men * (1 + allies(x).length * 0.5) < S.cnt[c].men * 0.65 && (!isP(x) || S.turn > 18));
+      && S.cnt[x].men * (1 + allies(x).length * 0.5) < S.cnt[c].men * (isP(x) ? 0.65 + 0.15 * dv.agg : 0.75) && (!isP(x) || (S.turn > 24 / dv.agg && (!fx(x, 'neutral') || Math.random() < 0.3))));
     if (cands.length) declareWar(c, cands.sort((u, v) => rel(c, u) - rel(c, v))[0]);
   }
   aiArmies(c);
@@ -1969,14 +2114,39 @@ function endTurn() {
   S.lost = 0;
   // Wirtschaft
   for (const c of alive()) {
-    const n = S.n[c], inc = income(c);
+    const n = S.n[c];
+    // Stabilität
+    const wars = Math.min(3, enemies(c).length), occ = S.cnt[c].provs - S.cnt[c].ctl;
+    let tgt = 55 + {low: 10, mid: 0, high: -15}[n.tax || 'mid'] + ({mon: 5, the: 10, dem: 5, mil: -5, com: 0, rep: 0, tec: 20, anc: -30}[n.ideo] || 0) - wars * 8 - occ * 2
+      + (n.econ && n.econ.until > S.turn ? (n.econ.m > 0 ? 5 : -10) : 0) - (S.winter > S.turn ? 20 : 0) - (isP(c) ? Math.floor((S.ae || 0) / 5) : 0) + fx(c, 'stabT');
+    tgt = clamp(tgt, 0, 100); n.stab = n.stab ?? 60; n.stab = clamp(n.stab + clamp(tgt - n.stab, -2, 2), 0, 100);
+    if (n.stab < 20 && Math.random() < 0.12) {
+      const own = []; for (let i = 0; i < S.own.length; i++) if (S.own[i] === c && bList(i).length) own.push(i);
+      if (own.length) { const q = pick(own), x = pick(S.bld[q]); x.lv--; if (x.lv <= 0) S.bld[q] = S.bld[q].filter(y => y !== x); if (isP(c)) { log(`Unruhen in ${G.provs[q].name}: ${BLD[x.b].n} beschädigt. Stabilität erhöhen!`, 'bad'); FXQ.push({p: q, k: 'loss'}); } }
+    }
+    progressProjects(c);
+    const inc = income(c);
     n.gold += inc.net; n.man = Math.min(n.man + inc.man, inc.manCap); n.mil += inc.mil; n.infl += inc.infl; n.fp = Math.round(((n.fp || 0) + inc.fp) * 10) / 10;
     if (isP(c)) { S.hist.push({g: inc.gold, u: inc.upkeep, f: inc.fp}); if (S.hist.length > 36) S.hist.shift(); }
     if (Math.random() < 0.025 && !(n.econ && n.econ.until > S.turn) && n.ideo !== 'anc') { const boom = Math.random() < 0.55; n.econ = {m: boom ? 0.25 : -0.2, until: S.turn + 6}; if (isP(c)) event({kind:'econ', boom}); }
     if (n.gold < 0) { for (const a of armiesOf(c)) a.men = Math.round(a.men * 0.92); n.gold = 0; if (isP(c)) log('Leere Staatskasse: Soldaten desertieren.', 'bad'); }
   }
+  progressCons(); progressMuster(); recount();
+  worldTick(); recount();
+  // Aggressive Expansion & Koalitionen gegen den Spieler
+  S.ae = Math.max(0, (S.ae || 0) - 1);
+  const dv = DIFF[S.diff || 'normal'], pl = S.player;
+  if (S.ae >= 35 && S.turn >= (S.coalT || 0) && Math.random() < 0.08 * dv.coal && S.n[pl].alive) {
+    const nb = [...nationNeighbors(pl)].filter(x => S.n[x] && S.n[x].alive && !S.ally[K(pl, x)] && !atWar(pl, x) && (S.truce[K(pl, x)] || 0) <= S.turn && rel(pl, x) < -10)
+      .sort((u, v) => S.cnt[v].men - S.cnt[u].men).slice(0, 2 + Math.round(dv.coal));
+    if (nb.length >= 2) {
+      S.coalT = S.turn + 30;
+      event({kind: 'coalition', members: nb});
+      for (const x of nb) declareWar(x, pl);
+    }
+  }
   // Vergeltungsschläge
-  for (const r of S.retal.splice(0)) if (S.n[r.by].alive && atWar(r.by, r.vs) && Math.random() < 0.75) { const t = nukeTarget(r.by, r.vs); if (t >= 0) launchNuke(r.by, t); }
+  for (const r of S.retal.splice(0)) if (S.n[r.by].alive && atWar(r.by, r.vs)) { const t = nukeTarget(r.by, r.vs); if (t >= 0) launchNuke(r.by, t); }
   for (let i = 0; i < S.rad.length; i++) if (S.rad[i] > 0) S.rad[i]--;
   if (S.doom > 0 && S.turn - (S.doomT || 0) > 18) { S.doom--; S.doomT = S.turn; }
   // KI-Entscheidungen
@@ -1999,9 +2169,9 @@ function endTurn() {
     const engaged = hostileIn(a.o, a.p);
     if (!engaged) a.mor = Math.min(maxMor(a.o), a.mor + (friendly ? 0.2 : 0.1));
     if (friendly && !engaged && a.men < a.max) {
-      const rate = S.bld[a.p] === 'barracks' ? 0.2 : 0.1;
-      const add = Math.min(a.max - a.men, Math.round(a.max * rate), n.man, Math.floor(n.gold / 3) * 1000);
-      if (add > 0) { a.men += add; n.man -= add; n.gold -= Math.ceil(add / 1000) * 3; }
+      const rate = hasB(a.p, 'barracks') ? 0.1 + 0.05 * bLv(a.p, 'barracks') : 0.08;
+      const add = Math.min(a.max - a.men, Math.round(a.max * rate), n.man, Math.floor(n.gold / 5) * 1000);
+      if (add > 0) { a.men += add; n.man -= add; n.gold -= Math.ceil(add / 1000) * 5; }
     }
     if (!friendly && !fx(a.o, 'noAttr')) a.men = Math.round(a.men * 0.99);
   }
@@ -2012,7 +2182,7 @@ function endTurn() {
   const codes = alive();
   for (let i = 0; i < codes.length; i++) for (let j = i + 1; j < codes.length; j++) {
     const x = codes[i], y = codes[j], k = K(x, y);
-    const base = S.ally[k] ? 50 : S.war[k] ? -60 : (S.trade[k] ? 25 : G.adjC[x].has(y) ? -5 : 0) + ideoRelBase(x, y);
+    const base = (S.ally[k] ? 50 : S.war[k] ? -60 : (S.trade[k] ? 25 : G.adjC[x].has(y) ? -5 : 0) + ideoRelBase(x, y)) - ((isP(x) || isP(y)) ? Math.floor((S.ae || 0) / 3) : 0);
     const r = S.rel[k] || 0; if (r !== base) S.rel[k] = r + Math.sign(base - r);
   }
   for (const k in S.truce) if (S.truce[k] <= S.turn) delete S.truce[k];
@@ -2026,6 +2196,486 @@ function endTurn() {
 function ranking() {
   return alive().map(c => ({c, provs: S.cnt[c].provs, men: S.cnt[c].men, score: S.cnt[c].val * 10 + Math.round(S.cnt[c].men / 2000) + S.n[c].techs.length * 15}))
     .sort((a, b) => b.score - a.score);
+}
+/* ================= IMPERIUM · Politik, Ereignisse, Weltgeschehen ================= */
+const POL = {
+  energy: {n:'Energie', g:'⚡', opts:{
+    coal: {n:'Kohle',            d:'+10 % Gold, +10 % Rekruten. Schmutzig: Smog-Krisen.', fx:{goldPct:.1, manPct:.1, stabT:-3}},
+    gas:  {n:'Gas-Import',       d:'+15 % Gold. Abhängig vom Ausland: Gaskrisen, besonders im Krieg.', fx:{goldPct:.15}},
+    nuc:  {n:'Atomkraft',        d:'+30 % Gold, +25 % Forschung. Die beste Energie – solange nichts passiert.', fx:{goldPct:.3, fpPct:.25}},
+    ren:  {n:'Erneuerbare',      d:'+5 % Gold, +6 Stabilität. Sicher, aber Dunkelflauten möglich.', fx:{goldPct:.05, stabT:6}},
+  }},
+  econ: {n:'Wirtschaft', g:'◇', opts:{
+    free:   {n:'Freier Markt',            d:'+25 % Gold, −10 Stabilität.', fx:{goldPct:.25, stabT:-10}},
+    social: {n:'Soziale Marktwirtschaft', d:'+5 % Gold, +8 Stabilität.', fx:{goldPct:.05, stabT:8}},
+    plan:   {n:'Planwirtschaft',          d:'Fabriken +4 Gold, Gebäude −20 %, aber −15 % Gold.', fx:{factoryGold:4, buildCost:.2, goldPct:-.15}},
+    cut:    {n:'Sparprogramm',            d:'Gebäudeunterhalt halbiert, +10 % Gold, −15 Stabilität.', fx:{bupHalf:1, goldPct:.1, stabT:-15}},
+  }},
+  army: {n:'Militär', g:'▲', opts:{
+    draft:   {n:'Wehrpflicht',  d:'+40 % Rekruten, −8 Stabilität.', fx:{manPct:.4, stabT:-8}},
+    pro:     {n:'Berufsarmee',  d:'+15 % Angriff, +15 % Moral, Armeeunterhalt +30 %.', fx:{atk:.15, mor:.15, armyUp:.3}},
+    neutral: {n:'Neutralität',  d:'+10 Stabilität, wirst seltener angegriffen – darfst aber keine Kriege erklären.', fx:{stabT:10, neutral:1}},
+  }},
+  media: {n:'Medien', g:'◎', opts:{
+    free:   {n:'Pressefreiheit', d:'+15 % Forschung, Demokratien mögen dich. Skandale werden öffentlich.', fx:{fpPct:.15}},
+    state:  {n:'Staatsmedien',   d:'+6 Stabilität, +1 Einfluss.', fx:{stabT:6, infl:1}},
+    censor: {n:'Zensur',         d:'+12 Stabilität, −20 % Forschung. Krisen lassen sich vertuschen.', fx:{stabT:12, fpPct:-.2}},
+  }},
+  health: {n:'Gesundheit', g:'✚', opts:{
+    public:  {n:'Staatliche Versorgung', d:'+8 Stabilität, +15 % Rekruten, −10 % Gold.', fx:{stabT:8, manPct:.15, goldPct:-.1}},
+    private: {n:'Privat',                d:'+10 % Gold, −5 Stabilität. Seuchen treffen härter.', fx:{goldPct:.1, stabT:-5}},
+  }},
+};
+const POL_COST = 10, POL_COOLDOWN = 6;
+// Versteckte Kombinationen – Synergien und Fallen
+const COMBOS = [
+  {id:'green',   n:'Grüne Wende',           good:true,  need:{energy:'ren', media:'free', econ:'social'}, fx:{goldPct:.15, stabT:5}, d:'Erneuerbare + Pressefreiheit + Soziale Marktwirtschaft: +15 % Gold, +5 Stabilität'},
+  {id:'bank',    n:'Bankenparadies',        good:true,  need:{army:'neutral', econ:'free'},               fx:{goldPct:.25},          d:'Neutralität + Freier Markt: +25 % Gold'},
+  {id:'arms',    n:'Rüstungsindustrie',     good:true,  need:{army:'pro', econ:'free'},                   fx:{goldPct:.1, atk:.1},   d:'Berufsarmee + Freier Markt: +10 % Gold, +10 % Angriff'},
+  {id:'welfare', n:'Wohlfahrtsstaat',       good:true,  need:{health:'public', econ:'social'},           fx:{stabT:10, manPct:.1},  d:'Staatliche Versorgung + Soziale Marktwirtschaft: +10 Stabilität, +10 % Rekruten'},
+  {id:'science', n:'Wissenschaftsnation',   good:true,  need:{energy:'nuc', media:'free'},                fx:{fpPct:.3},             d:'Atomkraft + Pressefreiheit: +30 % Forschung'},
+  {id:'black',   n:'Schwarzmarkt',          good:false, need:{econ:'plan', media:'censor'},               fx:{goldPct:-.25},         d:'Planwirtschaft + Zensur: −25 % Gold durch Schwarzmarkt'},
+  {id:'twoclass',n:'Zweiklassengesellschaft',good:false,need:{econ:'free', health:'private'},             fx:{stabT:-12},            d:'Freier Markt + private Gesundheit: −12 Stabilität, Generalstreik-Gefahr'},
+  {id:'smog',    n:'Smog-Tote',             good:false, need:{energy:'coal', health:'private'},           fx:{manPct:-.25},          d:'Kohle + private Gesundheit: −25 % Rekruten'},
+  {id:'riots',   n:'Massenproteste',        good:false, need:{econ:'cut', army:'draft'},                  fx:{stabT:-15},            d:'Sparprogramm + Wehrpflicht: −15 Stabilität, Unruhen'},
+  {id:'reactor', n:'Marode Reaktoren',      good:false, need:{energy:'nuc', econ:'cut'},                  fx:{},                     d:'Atomkraft + Sparprogramm: Wartung gespart – Unfallrisiko ×5'},
+  {id:'privnuc', n:'Profit vor Sicherheit', good:false, need:{energy:'nuc', econ:'free'},                 fx:{},                     d:'Atomkraft + Freier Markt: Betreiber sparen an Sicherheit – Unfallrisiko ×3'},
+  {id:'cover',   n:'Vertuschung',           good:false, need:{energy:'nuc', media:'censor'},              fx:{},                     d:'Atomkraft + Zensur: Ein Unfall wird zu spät gemeldet – doppelter Schaden'},
+];
+function defaultPol(c) {
+  const N = NATIONS[c], id = startIdeo(c);
+  return {
+    energy: ['FR','US','CN','RU','KR','JP','UA','CH','SE','FI','CZ','IN','GB','BE','CA','ES'].includes(c) ? 'nuc' : N.tier >= 4 ? 'gas' : 'coal',
+    econ: id === 'com' ? 'plan' : N.tier >= 4 ? 'social' : 'free',
+    army: c === 'CH' || c === 'AT' || c === 'IE' ? 'neutral' : N.tier >= 4 ? 'pro' : 'draft',
+    media: id === 'com' || id === 'mil' ? 'censor' : id === 'mon' || id === 'the' ? 'state' : 'free',
+    health: N.tier >= 4 ? 'public' : 'private',
+  };
+}
+const polOf = c => S.n[c].pol || (S.n[c].pol = defaultPol(c));
+function activeCombos(c) { const p = polOf(c); return COMBOS.filter(k => Object.entries(k.need).every(([cat, o]) => p[cat] === o)); }
+function polFx(c, k) {
+  const p = polOf(c); let v = 0;
+  for (const cat in p) { const o = POL[cat] && POL[cat].opts[p[cat]]; if (o && o.fx[k]) v += o.fx[k]; }
+  for (const cb of activeCombos(c)) if (cb.fx[k]) v += cb.fx[k];
+  const n = S.n[c]; if (n.mods) for (const m of n.mods) if (m.k === k && m.until > S.turn) v += m.v;
+  return v;
+}
+function canChangePol(c, cat, o) { const n = S.n[c]; return polOf(c)[cat] !== o && n.infl >= POL_COST && S.turn - ((n.polT || {})[cat] || -99) >= POL_COOLDOWN && n.ideo !== 'anc'; }
+function setPolicy(c, cat, o, free) {
+  if (!free && !canChangePol(c, cat, o)) return false;
+  const n = S.n[c]; if (!free) { n.infl -= POL_COST; n.stab = Math.max(0, n.stab - 5); }
+  polOf(c)[cat] = o; n.polT = n.polT || {}; n.polT[cat] = S.turn;
+  if (isP(c)) log(`Neue Politik: ${POL[cat].n} → ${POL[cat].opts[o].n}.`);
+  return true;
+}
+
+/* ---------- Risiken pro Monat ---------- */
+function risks(c) {
+  const p = polOf(c), n = S.n[c], cb = activeCombos(c).map(k => k.id), wars = enemies(c).length;
+  const r = {};
+  if (p.energy === 'nuc') r.nuc = 0.003 * (cb.includes('reactor') ? 5 : 1) * (cb.includes('privnuc') ? 3 : 1) * (n.stab < 30 ? 1.5 : 1) * (n.sci.includes('s4') ? 0.6 : 1) * (1 + polFx(c, 'nucRisk'));
+  if (p.energy === 'gas') r.gas = 0.012 * (wars ? 3 : 1);
+  if (p.energy === 'coal') r.smog = 0.01 * (p.health === 'private' ? 2 : 1);
+  if (p.energy === 'ren') r.dark = 0.008;
+  if (p.media === 'free') r.scandal = 0.015;
+  if (cb.includes('twoclass') && n.stab < 45) r.strike = 0.05;
+  if (p.army === 'pro' && n.stab < 30 && n.ideo !== 'mil') r.coup = 0.04;
+  if (n.ideo === 'mil' && p.media === 'free') r.coup = (r.coup || 0) + 0.03;
+  if (cb.includes('riots')) r.protest = 0.06;
+  if (n.stab <= 6) r.revolution = 0.25;
+  return r;
+}
+const RISK_NAMES = {nuc:'Atomunfall', gas:'Gaskrise', smog:'Smog-Krise', dark:'Dunkelflaute', scandal:'Medienskandal', strike:'Generalstreik', coup:'Militärputsch', protest:'Massenproteste', revolution:'Revolution'};
+const riskWord = p => { const y = 1 - Math.pow(1 - p, 12); return y >= .5 ? ['extrem', 'red'] : y >= .25 ? ['hoch', 'red'] : y >= .1 ? ['mittel', 'yellow'] : ['niedrig', 'green']; };
+
+/* ---------- Effekt-Engine ---------- */
+const FX_LABEL = {goldPct:'Gold', manPct:'Rekruten', fpPct:'Forschung', atk:'Angriff', mor:'Moral', def:'Verteidigung', nucRisk:'Atom-Unfallrisiko', stabT:'Stabilität'};
+function fxText(fx, tgt) {
+  const out = [], s = v => (v > 0 ? '+' : '−') + Math.abs(v);
+  const T = tgt ? NATIONS[tgt].name : 'ein Land';
+  for (const [k, v] of Object.entries(fx || {})) {
+    if (k === 'gold') out.push(`${s(v)} Gold`);
+    else if (k === 'goldM') out.push(`${v > 0 ? '+' : '−'}${Math.abs(v)} Monats­einnahmen`);
+    else if (k === 'man') out.push(`${v > 0 ? '+' : '−'}${fmtMen(Math.abs(v))} Rekruten`);
+    else if (k === 'manP') out.push(`${s(Math.round(v * 100))} % Rekruten`);
+    else if (k === 'stab') out.push(`${s(v)} Stabilität`);
+    else if (k === 'infl') out.push(`${s(v)} Einfluss`);
+    else if (k === 'mil') out.push(`${s(v)} Militärpunkte`);
+    else if (k === 'fp') out.push(`${s(v)} Forschung`);
+    else if (k === 'ae') out.push(`${s(v)} aggressive Expansion`);
+    else if (k === 'armyP') out.push(`${s(Math.round(v * 100))} % Armee`);
+    else if (k === 'bldLoss') out.push(`${v} ${v === 1 ? 'Gebäudestufe' : 'Gebäudestufen'} zerstört`);
+    else if (k === 'rad') out.push(`eine Provinz ${v} Monate verstrahlt`);
+    else if (k === 'mod') for (const m of [].concat(v)) out.push(m.k === 'stabT' ? `${s(m.v)} Stabilität/Monat-Ziel für ${m.m} Mon.` : m.k === 'nucRisk' ? `Atom-Unfallrisiko ${m.v > 0 ? '×' + (1 + m.v) : '×' + (1 + m.v).toFixed(1)} für ${m.m} Mon.` : `${s(Math.round(m.v * 100))} % ${FX_LABEL[m.k] || m.k} für ${m.m} Mon.`);
+    else if (k === 'econ') out.push(v === 'boom' ? 'Wirtschaftsboom' : 'Rezession');
+    else if (k === 'relN') out.push(`Nachbarn ${s(v)}`);
+    else if (k === 'relA') out.push(`alle Länder ${s(v)}`);
+    else if (k === 'relT') out.push(`${T} ${s(v)}`);
+    else if (k === 'relDem') out.push(`Demokratien ${s(v)}`);
+    else if (k === 'war') out.push(`${T} erklärt dir den Krieg`);
+    else if (k === 'allyT') out.push(`Bündnis mit ${T}`);
+    else if (k === 'setPol') out.push(`${POL[v[0]].n} → ${POL[v[0]].opts[v[1]].n}`);
+    else if (k === 'setTax') out.push('Steuern auf Normal');
+    else if (k === 'sci') out.push('eine zufällige Forschung abgeschlossen');
+    else if (k === 'nukes') out.push(`${s(v)} Sprengkopf`);
+    else if (k === 'loseProv') out.push(`Verlust ${v === 1 ? 'einer Provinz' : v + ' Provinzen'}`);
+    else if (k === 'ideo') out.push(`Ideologie → ${IDEOS[v].n}`);
+    else if (k === 'chance') out.push(`${Math.round(v.p * 100)} %: ${fxText(v.win, tgt) || 'nichts'} – sonst: ${fxText(v.lose, tgt) || 'nichts'}`);
+  }
+  return out.join(' · ');
+}
+function applyFx(c, fx, tgt) {
+  const n = S.n[c]; let note = '';
+  for (const [k, v] of Object.entries(fx || {})) {
+    switch (k) {
+      case 'gold': n.gold = Math.max(0, n.gold + v); break;
+      case 'goldM': n.gold = Math.max(0, n.gold + Math.round(v * Math.max(25, income(c).gold))); break;
+      case 'man': n.man = Math.max(0, n.man + v); break;
+      case 'manP': n.man = Math.max(0, Math.round(n.man * (1 + v))); break;
+      case 'stab': n.stab = clamp((n.stab ?? 60) + v, 0, 100); break;
+      case 'infl': n.infl = Math.max(0, n.infl + v); break;
+      case 'mil': n.mil = Math.max(0, n.mil + v); break;
+      case 'fp': n.fp = Math.max(0, (n.fp || 0) + v); break;
+      case 'ae': if (isP(c)) S.ae = Math.max(0, (S.ae || 0) + v); break;
+      case 'armyP': for (const a of armiesOf(c)) a.men = Math.max(0, Math.round(a.men * (1 + v))); S.armies = S.armies.filter(a => a.men >= 200); break;
+      case 'bldLoss': for (let i = 0; i < v; i++) { const own = []; for (let q = 0; q < S.own.length; q++) if (S.own[q] === c && S.bld[q].length) own.push(q); if (!own.length) break; const q = pick(own), x = pick(S.bld[q]); x.lv--; if (x.lv <= 0) S.bld[q] = S.bld[q].filter(y => y !== x); if (isP(c)) FXQ.push({p: q, k: 'loss'}); } break;
+      case 'rad': { const own = []; for (let q = 0; q < S.own.length; q++) if (S.own[q] === c) own.push(q); if (own.length) { const q = pick(own); S.rad[q] = Math.max(S.rad[q], v); S.bld[q] = []; FXQ.push({p: q, k: 'fallout'}); } break; }
+      case 'mod': n.mods = (n.mods || []).filter(m => m.until > S.turn); for (const m of [].concat(v)) n.mods.push({k: m.k, v: m.v, until: S.turn + m.m}); break;
+      case 'econ': n.econ = {m: v === 'boom' ? 0.25 : -0.2, until: S.turn + 6}; break;
+      case 'relN': for (const x of nationNeighbors(c)) if (S.n[x] && S.n[x].alive) addRel(c, x, v); break;
+      case 'relA': for (const x of alive()) if (x !== c) addRel(c, x, v); break;
+      case 'relT': if (tgt) addRel(c, tgt, v); break;
+      case 'relDem': for (const x of alive()) if (x !== c && ['dem', 'rep'].includes(ideoOf(x))) addRel(c, x, v); break;
+      case 'war': if (tgt && S.n[tgt].alive) declareWar(tgt, c); break;
+      case 'allyT': if (tgt && !atWar(c, tgt)) { S.ally[K(c, tgt)] = true; setRel(c, tgt, Math.max(rel(c, tgt), 60)); } break;
+      case 'setPol': setPolicy(c, v[0], v[1], true); break;
+      case 'setTax': n.tax = v; break;
+      case 'sci': { const av = SCI.filter(t => !n.sci.includes(t.id) && t.req.every(r => n.sci.includes(r)) && t.br < 2); if (av.length) n.sci.push(pick(av).id); break; }
+      case 'nukes': n.nukes = Math.max(0, n.nukes + v); break;
+      case 'ideo': changeIdeology(c, v, S.turn, true); break;
+      case 'loseProv': for (let i = 0; i < v; i++) {
+        const cand = []; for (let q = 0; q < S.own.length; q++) if (S.own[q] === c && q !== n.cap && G.provs[q].nb.some(z => S.own[z] !== c)) cand.push(q);
+        if (!cand.length) break; const q = pick(cand), to = S.own[pick(G.provs[q].nb.filter(z => S.own[z] !== c))];
+        S.own[q] = to; S.ctl[q] = to; S.cons = S.cons.filter(k2 => k2.p !== q); if (isP(c)) FXQ.push({p: q, k: 'loss'});
+        log(`${G.provs[q].name} fällt an ${nm(to)}.`, isP(c) ? 'bad' : '');
+      } break;
+      case 'chance': { const win = Math.random() < v.p; note = win ? 'Es hat geklappt!' : 'Es ging schief.'; const r = applyFx(c, win ? v.win : v.lose, tgt); if (r) note += ' ' + r; break; }
+    }
+  }
+  recount();
+  return note;
+}
+
+/* ---------- Ereignisse für den Spieler (mit Entscheidungen) ---------- */
+// cond: c => bool, tgt: 'nb' (Nachbar) | 'strong' (starker Nachbar) | 'any' (beliebig) | 'rich'
+const EV = [
+  // Wirtschaft
+  {id:'startup', t:'Tech-Startup erobert die Welt', d:'Ein Startup aus deinem Land ist plötzlich Milliarden wert. Wie reagiert der Staat?', o:[
+    {t:'Kräftig besteuern', fx:{goldM:3}}, {t:'Fördern und Forschung finanzieren', fx:{gold:-100, fp:40, mod:{k:'goldPct', v:.15, m:12}}}]},
+  {id:'bankcrash', t:'Bankenkrise', d:'Die grösste Bank des Landes steht vor dem Kollaps. Tausende Arbeitsplätze hängen daran.', o:[
+    {t:'Bank mit Steuergeld retten', fx:{goldM:-4, stab:5}}, {t:'Pleite gehen lassen', fx:{stab:-15, mod:{k:'goldPct', v:-.3, m:12}}}]},
+  {id:'oil', t:'Riesiges Ölfeld entdeckt', d:'Geologen melden einen sensationellen Fund. Umweltschützer protestieren schon.', o:[
+    {t:'Sofort fördern', fx:{mod:{k:'goldPct', v:.35, m:24}, stab:-6}}, {t:'Unangetastet lassen', fx:{stab:8, relA:5}}]},
+  {id:'strike', t:'Gewerkschaften drohen mit Streik', d:'Sie fordern 20 % mehr Lohn – sonst steht das Land still.', o:[
+    {t:'Nachgeben', fx:{mod:{k:'goldPct', v:-.1, m:12}, stab:10}}, {t:'Hart bleiben', fx:{chance:{p:.5, win:{stab:5}, lose:{stab:-20, mod:{k:'goldPct', v:-.4, m:3}}}}}]},
+  {id:'bubble', t:'Börsenblase', d:'Die Kurse steigen seit Monaten wie verrückt. Deine Berater sind gespalten.', o:[
+    {t:'Rechtzeitig Staatsanteile verkaufen', fx:{goldM:2}}, {t:'Weiterreiten', fx:{chance:{p:.4, win:{goldM:7}, lose:{goldM:-4, econ:'rec'}}}}]},
+  {id:'crypto', t:'Krypto als Staatswährung?', d:'Ein Tech-Milliardär verspricht dir unendlichen Reichtum, wenn du seine Kryptowährung einführst.', o:[
+    {t:'Einführen', fx:{chance:{p:.3, win:{goldM:10, stab:5}, lose:{goldM:-6, stab:-20}}}}, {t:'Ablehnen', fx:{}}]},
+  {id:'inflation', t:'Inflation galoppiert', d:'Die Preise steigen jeden Monat. Die Bevölkerung wird nervös.', o:[
+    {t:'Zinsen hart erhöhen', fx:{mod:{k:'goldPct', v:-.15, m:6}, stab:-5}}, {t:'Geld drucken', fx:{gold:350, mod:{k:'goldPct', v:-.3, m:12}, stab:-8}}]},
+  {id:'investors', t:'Ausländische Investoren', d:'{T} will Milliarden in deine Industrie stecken – im Gegenzug für Einfluss.', tgt:'rich', o:[
+    {t:'Willkommen heissen', fx:{goldM:3, relT:20, infl:-5}}, {t:'Ablehnen', fx:{stab:4, relT:-10}}]},
+  {id:'megadeal', t:'Mega-Handelsabkommen', d:'{T} bietet dir ein Freihandelsabkommen über 10 Jahre an.', tgt:'any', o:[
+    {t:'Unterzeichnen', fx:{mod:{k:'goldPct', v:.15, m:24}, relT:20, stab:-4}}, {t:'Heimische Wirtschaft schützen', fx:{stab:5}}]},
+  {id:'tourism', t:'Tourismusboom', d:'Ein viraler Film zeigt dein Land – die Touristen strömen.', o:[
+    {t:'Infrastruktur ausbauen', fx:{gold:-150, mod:{k:'goldPct', v:.2, m:24}}}, {t:'Einfach geniessen', fx:{mod:{k:'goldPct', v:.1, m:12}}}]},
+  {id:'goldrush', t:'Goldrausch', d:'In den Bergen wurde Gold gefunden. Glücksritter strömen herbei.', o:[
+    {t:'Staatsmonopol', fx:{gold:400, stab:-8}}, {t:'Frei schürfen lassen', fx:{gold:150, stab:4}}]},
+  {id:'housing', t:'Wohnungskrise', d:'Junge Familien finden keine Wohnungen mehr. Die Mieten explodieren.', o:[
+    {t:'Sozialwohnungen bauen', fx:{gold:-250, stab:12}}, {t:'Der Markt regelt das', fx:{stab:-12}}]},
+  {id:'aging', t:'Überalterung', d:'Immer weniger Junge finanzieren immer mehr Rentner.', cond:c => NATIONS[c].tier >= 3, o:[
+    {t:'Rentenalter erhöhen', fx:{stab:-15, mod:{k:'goldPct', v:.12, m:36}}}, {t:'Schulden machen', fx:{gold:250, mod:{k:'goldPct', v:-.12, m:36}}}, {t:'Einwanderung fördern', fx:{man:20000, stab:-6}}]},
+  {id:'lottery', t:'Staatslotterie', d:'Ein Berater schlägt eine nationale Lotterie vor.', o:[
+    {t:'Einführen', fx:{mod:{k:'goldPct', v:.06, m:60}, stab:-3}}, {t:'Glücksspiel bleibt verboten', fx:{stab:2}}]},
+  {id:'megaproject', t:'Megaprojekt Hochgeschwindigkeitszug', d:'Ingenieure wollen das Land mit einem Hochgeschwindigkeitsnetz verbinden.', o:[
+    {t:'Bauen', fx:{gold:-300, mod:{k:'goldPct', v:.12, m:48}}}, {t:'Zu teuer', fx:{}}]},
+  {id:'warbonds', t:'Kriegsanleihen', d:'Der Krieg ist teuer. Das Finanzministerium schlägt Kriegsanleihen vor.', cond:c => enemies(c).length > 0, o:[
+    {t:'Ausgeben', fx:{gold:400, mod:{k:'goldPct', v:-.1, m:24}}}, {t:'Nein', fx:{}}]},
+  {id:'default', t:'Staatsbankrott droht', d:'Die Kassen sind leer, die Gläubiger werden ungeduldig.', cond:c => S.n[c].gold < 30, o:[
+    {t:'IWF-Kredit mit Auflagen', fx:{gold:300, setPol:['econ', 'cut']}}, {t:'Zahlungen einstellen', fx:{stab:-20, relA:-15, gold:150}}]},
+  {id:'uninaid', t:'UNO-Hilfsprogramm', d:'Die Vereinten Nationen bieten Entwicklungshilfe an.', cond:c => NATIONS[c].tier <= 2, o:[
+    {t:'Annehmen', fx:{gold:250, infl:-3}}, {t:'Stolz ablehnen', fx:{stab:5}}]},
+  // Energie
+  {id:'nucinspect', t:'Reaktor-Inspektion fällig', d:'Die Sicherheitsbehörde will alle Atomkraftwerke gründlich prüfen. Das kostet – und dauert.', cond:c => polOf(c).energy === 'nuc', o:[
+    {t:'Gründlich prüfen', fx:{gold:-150, mod:{k:'nucRisk', v:-.7, m:36}}}, {t:'Durchwinken', fx:{gold:50, mod:{k:'nucRisk', v:2, m:36}}}]},
+  {id:'nucprotest', t:'Anti-Atom-Proteste', d:'Hunderttausende demonstrieren gegen die Atomkraftwerke.', cond:c => polOf(c).energy === 'nuc', o:[
+    {t:'Ausstieg: Gas-Import', fx:{setPol:['energy', 'gas'], stab:8}}, {t:'Weiterbetreiben', fx:{stab:-10}}]},
+  {id:'solar', t:'Durchbruch bei Solarzellen', d:'Forscher verdoppeln den Wirkungsgrad.', cond:c => polOf(c).energy === 'ren', o:[
+    {t:'Massiv ausbauen', fx:{gold:-150, mod:{k:'goldPct', v:.2, m:36}}}, {t:'Patent verkaufen', fx:{goldM:3}}]},
+  {id:'coalmine', t:'Grubenunglück', d:'Ein Kohlebergwerk ist eingestürzt. 300 Kumpel sind verschüttet.', cond:c => polOf(c).energy === 'coal', o:[
+    {t:'Alles für die Rettung', fx:{gold:-120, stab:5}}, {t:'Mine versiegeln', fx:{stab:-15}}]},
+  {id:'gasdeal', t:'Billiges Gas angeboten', d:'{T} bietet dir Gas zum halben Preis – für politische Gefälligkeiten.', tgt:'strong', cond:c => polOf(c).energy === 'gas', o:[
+    {t:'Annehmen', fx:{mod:{k:'goldPct', v:.2, m:24}, relT:20, relDem:-15}}, {t:'Ablehnen', fx:{relT:-15}}]},
+  {id:'blackout', t:'Landesweiter Blackout', d:'Ein Fehler im Netz legt das ganze Land für Tage lahm.', o:[
+    {t:'Netz modernisieren', fx:{gold:-200, stab:3}}, {t:'Notdürftig flicken', fx:{stab:-10, mod:{k:'goldPct', v:-.1, m:6}}}]},
+  // Politik
+  {id:'corruption', t:'Korruptionsskandal', d:'Dein Finanzminister soll Millionen abgezweigt haben.', o:[
+    {t:'Sofort entlassen', fx:{stab:4, infl:-5}}, {t:'Vertuschen', fx:{chance:{p:.55, win:{gold:100}, lose:{stab:-25, relDem:-15}}}}]},
+  {id:'election', t:'Wahlen stehen an', d:'Die Umfragen sind knapp. Deine Berater haben zwei Strategien.', cond:c => ['dem', 'rep'].includes(S.n[c].ideo), o:[
+    {t:'Populistische Wahlgeschenke', fx:{stab:15, mod:{k:'goldPct', v:-.15, m:12}}}, {t:'Ehrlicher Wahlkampf', fx:{chance:{p:.55, win:{stab:8, infl:5}, lose:{stab:-15}}}}]},
+  {id:'wedding', t:'Königliche Hochzeit', d:'Der Thronfolger heiratet eine Prinzessin aus {T}.', tgt:'any', cond:c => S.n[c].ideo === 'mon', o:[
+    {t:'Prunkvoll feiern', fx:{gold:-150, stab:15, relT:30}}, {t:'Bescheiden feiern', fx:{stab:5, relT:15}}]},
+  {id:'heir', t:'Thronfolgestreit', d:'Zwei Prinzen beanspruchen die Krone.', cond:c => S.n[c].ideo === 'mon', o:[
+    {t:'Der Älteste erbt', fx:{stab:-5}}, {t:'Der Beliebtere erbt', fx:{chance:{p:.5, win:{stab:12}, lose:{stab:-20, armyP:-.1}}}}]},
+  {id:'purge', t:'Parteisäuberung?', d:'Der Geheimdienst meldet einen Reformflügel in der Partei.', cond:c => S.n[c].ideo === 'com', o:[
+    {t:'Säubern', fx:{stab:10, fp:-40, relDem:-10}}, {t:'Reformern freie Hand', fx:{fp:50, stab:-12, mod:{k:'goldPct', v:.1, m:24}}}]},
+  {id:'juntarift', t:'Streit in der Junta', d:'Zwei Generäle streiten um die Macht.', cond:c => S.n[c].ideo === 'mil', o:[
+    {t:'Beide ausbezahlen', fx:{gold:-200}}, {t:'Einen entmachten', fx:{armyP:-.2, stab:6}}]},
+  {id:'revival', t:'Religiöse Erweckung', d:'Eine Welle der Frömmigkeit geht durchs Land.', cond:c => S.n[c].ideo === 'the', o:[
+    {t:'Fördern', fx:{stab:12, fp:-30}}, {t:'Bremsen', fx:{stab:-6, fp:20}}]},
+  {id:'coupplot', t:'Putschpläne aufgedeckt', d:'Der Geheimdienst hat Beweise: Ein General plant den Umsturz.', cond:c => S.n[c].stab < 45, o:[
+    {t:'Verhaften lassen', fx:{chance:{p:.7, win:{stab:6}, lose:{armyP:-.3, stab:-20}}}}, {t:'Befördern und kaufen', fx:{gold:-150, mil:8, stab:-4}}]},
+  {id:'taxrevolt', t:'Steuerrevolte', d:'Bauern und Händler weigern sich, die hohen Steuern zu zahlen.', cond:c => S.n[c].tax === 'high', o:[
+    {t:'Steuern senken', fx:{setTax:'mid', stab:10}}, {t:'Militär einsetzen', fx:{stab:-12, armyP:-.05, relDem:-15}}]},
+  {id:'leak', t:'Geheimdokumente geleakt', d:'Eine Plattform veröffentlicht Tausende geheime Regierungsdokumente.', o:[
+    {t:'Alles dementieren', fx:{chance:{p:.5, win:{}, lose:{stab:-15, relA:-10}}}}, {t:'Offen zugeben', fx:{stab:-8, relA:5}}]},
+  {id:'scandal', t:'TV-Enthüllung', d:'Ein Fernsehsender deckt eine Affäre im Kabinett auf.', cond:c => polOf(c).media === 'free', o:[
+    {t:'Minister tritt zurück', fx:{stab:-5, infl:3}}, {t:'Sender verklagen', fx:{stab:-12, relDem:-10}}]},
+  {id:'separatists', t:'Separatisten fordern Unabhängigkeit', d:'Eine Grenzregion will sich abspalten. Die Stimmung ist aufgeheizt.', cond:c => S.cnt[c].provs >= 3, o:[
+    {t:'Autonomie gewähren', fx:{stab:10, mod:{k:'goldPct', v:-.1, m:24}}}, {t:'Unterdrücken', fx:{stab:-10, armyP:-.1}}, {t:'Referendum', fx:{chance:{p:.55, win:{stab:15}, lose:{loseProv:1, stab:-5}}}}]},
+  {id:'rebelprov', t:'Provinz im Aufstand', d:'Eine Provinz verweigert Steuern und Befehle aus der Hauptstadt.', cond:c => S.n[c].stab < 30 && S.cnt[c].provs >= 2, o:[
+    {t:'Verhandeln', fx:{gold:-200, stab:5}}, {t:'Militär schicken', fx:{chance:{p:.6, win:{armyP:-.1}, lose:{armyP:-.15, loseProv:1}}}}]},
+  {id:'refugees', t:'Flüchtlingswelle', d:'Hunderttausende fliehen aus einem Krisengebiet an deine Grenze.', o:[
+    {t:'Aufnehmen', fx:{man:25000, stab:-8, relA:6}}, {t:'Grenzen schliessen', fx:{stab:3, relA:-6}}]},
+  {id:'skilled', t:'Fachkräfte wollen kommen', d:'Tausende Ingenieure aus dem Ausland suchen eine neue Heimat.', o:[
+    {t:'Willkommen', fx:{fp:40, man:8000, stab:-3}}, {t:'Nein danke', fx:{}}]},
+  {id:'braindrain', t:'Braindrain', d:'Deine besten Köpfe wandern ins Ausland ab.', o:[
+    {t:'Gehälter erhöhen', fx:{mod:{k:'goldPct', v:-.06, m:24}}}, {t:'Nichts tun', fx:{fp:-40, mod:{k:'fpPct', v:-.25, m:24}}}]},
+  {id:'babyboom', t:'Babyboom', d:'Die Geburtenrate schnellt in die Höhe.', o:[
+    {t:'Kindergeld erhöhen', fx:{gold:-100, mod:{k:'manPct', v:.35, m:48}}}, {t:'Geniessen', fx:{mod:{k:'manPct', v:.15, m:36}}}]},
+  {id:'education', t:'Bildungsreform', d:'Experten schlagen eine grosse Bildungsreform vor.', o:[
+    {t:'Umsetzen', fx:{gold:-200, mod:{k:'fpPct', v:.35, m:36}}}, {t:'Später', fx:{}}]},
+  {id:'teachers', t:'Lehrerstreik', d:'Die Schulen sind geschlossen. Die Lehrer fordern mehr Lohn.', cond:c => S.cnt[c].school > 0, o:[
+    {t:'Löhne erhöhen', fx:{mod:{k:'goldPct', v:-.06, m:24}, stab:4}}, {t:'Hart bleiben', fx:{fp:-50, stab:-8}}]},
+  {id:'nobel', t:'Nobelpreis!', d:'Eine Forscherin aus deinem Land gewinnt den Nobelpreis.', o:[
+    {t:'Nationalfeiertag', fx:{stab:8, fp:40}}, {t:'Forschungsinstitut gründen', fx:{gold:-150, fp:100}}]},
+  {id:'inventor', t:'Geniale Erfindung', d:'Ein Tüftler hat eine bahnbrechende Maschine erfunden.', o:[
+    {t:'Patent verkaufen', fx:{goldM:4}}, {t:'Staatlich nutzen', fx:{sci:1}}]},
+  {id:'aiboom', t:'KI-Revolution', d:'Künstliche Intelligenz verändert die Wirtschaft rasant.', o:[
+    {t:'Voll fördern', fx:{fp:60, mod:{k:'goldPct', v:.12, m:24}, stab:-8}}, {t:'Streng regulieren', fx:{stab:5}}]},
+  {id:'space', t:'Raumfahrtprogramm', d:'Deine Ingenieure wollen eine Rakete ins All schiessen.', o:[
+    {t:'Finanzieren', fx:{gold:-350, fp:100, stab:10, relA:5}}, {t:'Zu teuer', fx:{}}]},
+  {id:'olympics', t:'Olympische Spiele', d:'Das IOC bietet dir die Austragung der Olympischen Spiele an.', o:[
+    {t:'Austragen', fx:{gold:-300, stab:15, relA:10, mod:{k:'goldPct', v:.1, m:12}}}, {t:'Ablehnen', fx:{}}]},
+  {id:'worldcup', t:'Weltmeister!', d:'Deine Fussballnationalmannschaft gewinnt die WM!', o:[
+    {t:'Feiertag ausrufen', fx:{stab:15, mod:{k:'goldPct', v:-.05, m:1}}}, {t:'Einfach mitfeiern', fx:{stab:8}}]},
+  {id:'celebrity', t:'Weltstar', d:'Ein Popstar aus deinem Land erobert die Charts weltweit.', o:[
+    {t:'Zum Botschafter machen', fx:{infl:10, relA:5}}, {t:'Konzert für das Volk', fx:{stab:8}}]},
+  // Katastrophen
+  {id:'pandemic', t:'Pandemie', d:'Ein neues Virus verbreitet sich rasend schnell.', o:[
+    {t:'Harter Lockdown', fx:{mod:{k:'goldPct', v:-.35, m:6}, stab:-8}}, {t:'Weitermachen wie bisher', fx:{manP:-.5, armyP:-.15, stab:-15}}]},
+  {id:'quake', t:'Schweres Erdbeben', d:'Ein Beben der Stärke 7,8 erschüttert das Land.', o:[
+    {t:'Wiederaufbau finanzieren', fx:{bldLoss:2, goldM:-3, stab:5}}, {t:'Bürger helfen sich selbst', fx:{bldLoss:4, stab:-15}}]},
+  {id:'flood', t:'Jahrhunderthochwasser', d:'Flüsse treten über die Ufer, ganze Städte stehen unter Wasser.', o:[
+    {t:'Dämme und Hilfe', fx:{goldM:-2, bldLoss:1}}, {t:'Abwarten', fx:{bldLoss:3, manP:-.2, stab:-10}}]},
+  {id:'drought', t:'Dürre', d:'Seit Monaten kein Regen. Die Ernte vertrocknet.', o:[
+    {t:'Nahrung importieren', fx:{goldM:-2}}, {t:'Rationieren', fx:{stab:-12, manP:-.3}}]},
+  {id:'famine', t:'Missernte', d:'Schädlinge haben die Ernte vernichtet.', o:[
+    {t:'Notreserven öffnen', fx:{goldM:-2, stab:3}}, {t:'Export stoppen', fx:{relN:-12, stab:-4}}]},
+  {id:'wildfire', t:'Waldbrände', d:'Riesige Feuer wüten im ganzen Land.', o:[
+    {t:'Internationale Hilfe', fx:{relA:5, infl:-5, bldLoss:1}}, {t:'Alleine löschen', fx:{gold:-150, bldLoss:1}}]},
+  {id:'volcano', t:'Vulkanausbruch', d:'Ein Vulkan bricht aus. Asche verdunkelt den Himmel.', o:[
+    {t:'Evakuieren', fx:{goldM:-1, bldLoss:2}}, {t:'Bleiben', fx:{manP:-.25, bldLoss:2, stab:-10}}]},
+  {id:'tsunami', t:'Tsunami', d:'Eine gewaltige Welle trifft die Küste.', cond:c => S.cnt[c].coast > 0, o:[
+    {t:'Katastrophenhilfe', fx:{goldM:-3, bldLoss:2}}, {t:'Ausländische Hilfe annehmen', fx:{bldLoss:3, infl:-8, relA:6}}]},
+  {id:'meteor', t:'Meteoriteneinschlag', d:'Ein Meteorit schlägt in einer Provinz ein. Die Welt hält den Atem an.', w:.3, o:[
+    {t:'Wiederaufbau', fx:{bldLoss:4, goldM:-2, stab:-5}}, {t:'Touristenattraktion daraus machen', fx:{bldLoss:4, mod:{k:'goldPct', v:.1, m:24}}}]},
+  {id:'coldwinter', t:'Eiskalter Winter', d:'Temperaturen von −30 °C. Die Heizkosten explodieren.', o:[
+    {t:'Heizungen subventionieren', fx:{goldM:-2}}, {t:'Sparen', fx:{stab:-12, manP:-.1}}]},
+  {id:'bridge', t:'Brücke eingestürzt', d:'Eine marode Autobahnbrücke ist eingestürzt. Es gibt Tote.', cond:c => polOf(c).econ === 'cut', o:[
+    {t:'Sanierungsprogramm', fx:{gold:-250, stab:5}}, {t:'Nur flicken', fx:{stab:-12}}]},
+  {id:'factoryfire', t:'Grossbrand in Fabrik', d:'Eine Chemiefabrik steht in Flammen.', cond:c => S.cnt[c].factory > 0, o:[
+    {t:'Entschädigen', fx:{bldLoss:1, gold:-100, stab:3}}, {t:'Betreiber haften lassen', fx:{bldLoss:1, stab:-6}}]},
+  {id:'cyber', t:'Cyberangriff', d:'Hacker haben das Stromnetz und die Banken lahmgelegt und fordern Lösegeld.', o:[
+    {t:'Lösegeld zahlen', fx:{goldM:-2}}, {t:'Nicht zahlen', fx:{mod:{k:'goldPct', v:-.25, m:4}, stab:-8}}, {t:'Cyber-Abwehr aufbauen', fx:{gold:-200, fp:30}}]},
+  {id:'pirates', t:'Piraterie', d:'Piraten kapern deine Handelsschiffe.', cond:c => S.cnt[c].coast > 0, o:[
+    {t:'Marine schicken', fx:{gold:-120, armyP:-.03}}, {t:'Lösegeld zahlen', fx:{goldM:-1}}, {t:'Ignorieren', fx:{mod:{k:'goldPct', v:-.12, m:6}}}]},
+  {id:'cartel', t:'Drogenkartell', d:'Ein Kartell kontrolliert ganze Stadtviertel.', o:[
+    {t:'Krieg gegen das Kartell', fx:{armyP:-.08, stab:10, gold:-100}}, {t:'Wegschauen und kassieren', fx:{gold:200, stab:-15}}]},
+  // Militär
+  {id:'mutiny', t:'Meuterei', d:'Soldaten verweigern den Befehl und fordern ihren ausstehenden Sold.', cond:c => S.n[c].stab < 40 && S.cnt[c].men > 10000, o:[
+    {t:'Sold nachzahlen', fx:{gold:-200}}, {t:'Niederschlagen', fx:{armyP:-.2, stab:-5}}]},
+  {id:'veterans', t:'Veteranenproteste', d:'Kriegsveteranen fordern Renten.', cond:c => (S.stats.battlesWon || 0) + enemies(c).length > 0, o:[
+    {t:'Renten zahlen', fx:{goldM:-1, stab:8}}, {t:'Ignorieren', fx:{stab:-10}}]},
+  {id:'armsdeal', t:'Waffendeal', d:'{T} bietet dir moderne Waffen an.', tgt:'any', o:[
+    {t:'Kaufen', fx:{gold:-250, mod:{k:'atk', v:.2, m:36}, relT:15}}, {t:'Ablehnen', fx:{}}]},
+  {id:'defector', t:'Überläufer', d:'Ein General aus {T} läuft zu dir über – mit Plänen.', tgt:'nb', o:[
+    {t:'Aufnehmen', fx:{mil:15, fp:20, relT:-25}}, {t:'Ausliefern', fx:{relT:20}}]},
+  {id:'desertion', t:'Massendesertion', d:'Ganze Regimenter laufen davon.', cond:c => enemies(c).length > 0, o:[
+    {t:'Deserteure hinrichten', fx:{armyP:-.1, stab:-10, relDem:-10}}, {t:'Amnestie anbieten', fx:{armyP:-.15, stab:5}}]},
+  {id:'peacemove', t:'Friedensbewegung', d:'Hunderttausende fordern ein Ende des Krieges.', cond:c => enemies(c).length > 0, o:[
+    {t:'Frieden versprechen', fx:{stab:10}}, {t:'Ignorieren', fx:{stab:-15}}]},
+  {id:'warhero', t:'Kriegsheld', d:'Ein Soldat hat allein einen ganzen Angriff abgewehrt. Die Nation feiert ihn.', cond:c => (S.stats.battlesWon || 0) > 0, o:[
+    {t:'Zum General befördern', fx:{mod:{k:'mor', v:.15, m:24}}}, {t:'Grosse Parade', fx:{stab:10, gold:-50}}]},
+  {id:'spies', t:'Spion enttarnt', d:'Ein Spion aus {T} wurde im Verteidigungsministerium gefasst.', tgt:'nb', o:[
+    {t:'Öffentlich ausweisen', fx:{relT:-30, stab:4}}, {t:'Als Doppelagent nutzen', fx:{fp:40, mil:5}}]},
+  {id:'stolen', t:'Geheimdienst-Coup', d:'Dein Geheimdienst könnte Forschungspläne aus {T} stehlen.', tgt:'any', o:[
+    {t:'Zugreifen', fx:{chance:{p:.6, win:{sci:1}, lose:{relT:-40, relA:-5}}}}, {t:'Zu riskant', fx:{}}]},
+  // Diplomatie
+  {id:'border', t:'Grenzzwischenfall', d:'An der Grenze zu {T} wurden Soldaten erschossen.', tgt:'nb', o:[
+    {t:'Entschuldigen', fx:{infl:-5, relT:10}}, {t:'Vergeltung androhen', fx:{relT:-35, stab:5}}]},
+  {id:'ultimatum', t:'Ultimatum', d:'{T} fordert Tribut – sonst Krieg.', tgt:'strong', cond:c => S.turn > 12, o:[
+    {t:'Tribut zahlen', fx:{goldM:-3, stab:-5}}, {t:'Ablehnen', fx:{chance:{p:.5, win:{stab:8}, lose:{war:1}}}}]},
+  {id:'protector', t:'Schutzbündnis angeboten', d:'{T} bietet dir ein Bündnis an – zum Schutz vor Feinden.', tgt:'strong', o:[
+    {t:'Annehmen', fx:{allyT:1}}, {t:'Ablehnen', fx:{relT:-10}}]},
+  {id:'gaffe', t:'Diplomatischer Fauxpas', d:'Dein Aussenminister hat beim Staatsbankett {T} öffentlich beleidigt.', tgt:'any', o:[
+    {t:'Minister entlassen', fx:{relT:-10, stab:-3}}, {t:'Dazu stehen', fx:{relT:-35, stab:4}}]},
+  {id:'summit', t:'Weltgipfel', d:'Die Staatschefs der Welt treffen sich. Bist du dabei?', o:[
+    {t:'Teilnehmen', fx:{gold:-60, relA:10, infl:6}}, {t:'Fernbleiben', fx:{relA:-6}}]},
+  {id:'sanctions', t:'Internationale Sanktionen', d:'Die Weltgemeinschaft verhängt wegen deiner Expansion Sanktionen.', cond:c => (S.ae || 0) >= 20, o:[
+    {t:'Aushalten', fx:{mod:{k:'goldPct', v:-.3, m:12}}}, {t:'Diplomaten bestechen', fx:{gold:-300, relA:8}}, {t:'Zurückhaltung geloben', fx:{ae:-15, infl:-5}}]},
+  {id:'charity', t:'Hilfsappell', d:'{T} wurde von einer Katastrophe getroffen und bittet um Hilfe.', tgt:'any', o:[
+    {t:'Grosszügig helfen', fx:{gold:-150, relT:35, relA:5}}, {t:'Nicht helfen', fx:{relT:-10}}]},
+  {id:'treaty', t:'Abrüstungsvertrag', d:'Die Welt verhandelt über Atom-Abrüstung.', cond:c => S.n[c].nukes > 0, o:[
+    {t:'Unterzeichnen', fx:{nukes:-1, relA:15, stab:5}}, {t:'Ablehnen', fx:{relA:-10}}]},
+];
+
+/* ---------- Welt-Ereignisse (treffen KI-Länder, erscheinen im Ticker) ---------- */
+const WEV = [
+  {t:'Erdbeben in {C}', fx:{bldLoss:3, stab:-10}},
+  {t:'Wirtschaftswunder in {C}', fx:{econ:'boom', stab:5}},
+  {t:'Bankenkrise erschüttert {C}', fx:{econ:'rec', stab:-10, gold:-150}},
+  {t:'{C} entdeckt riesige Ölvorkommen', fx:{mod:{k:'goldPct', v:.3, m:24}}},
+  {t:'Pandemie wütet in {C}', fx:{manP:-.4, armyP:-.1, stab:-10}},
+  {t:'Massenproteste in {C}', fx:{stab:-15}},
+  {t:'Staatsbankrott: {C} ist pleite', fx:{gold:-9999, stab:-20}},
+  {t:'{C} feiert technologischen Durchbruch', fx:{sci:1}},
+  {t:'Hungersnot in {C}', fx:{manP:-.4, stab:-12}},
+  {t:'Korruptionsskandal stürzt Regierung von {C}', fx:{stab:-12, infl:-5}},
+  {t:'Flut verwüstet {C}', fx:{bldLoss:2, manP:-.15}},
+  {t:'{C} rüstet massiv auf', fx:{mod:{k:'atk', v:.2, m:24}, mil:10}},
+  {t:'Militärputsch in {C}!', fx:{ideo:'mil', stab:-10, armyP:-.15}, cond:c => S.n[c].ideo !== 'mil'},
+  {t:'Wahlsieg der Reformer in {C}', fx:{ideo:'dem', stab:5}, cond:c => ['rep', 'mon'].includes(S.n[c].ideo)},
+  {t:'Volksaufstand in {C} – die Kommunisten übernehmen', fx:{ideo:'com', stab:-10}, cond:c => S.n[c].stab < 35 && S.n[c].ideo !== 'com'},
+  {t:'{C} ruft die Monarchie aus', fx:{ideo:'mon', stab:5}, cond:c => S.n[c].stab < 40 && S.n[c].ideo !== 'mon'},
+  {t:'Atomunfall in {C}!', fx:{rad:36, stab:-25, mod:{k:'goldPct', v:-.25, m:24}}, cond:c => polOf(c).energy === 'nuc', w:.4},
+  {t:'Diktator von {C} gestorben – Machtkampf', fx:{stab:-20, armyP:-.1}},
+  {t:'Tourismusboom in {C}', fx:{mod:{k:'goldPct', v:.15, m:12}}},
+  {t:'Cyberangriff legt {C} lahm', fx:{mod:{k:'goldPct', v:-.2, m:4}}},
+  {t:'Generalstreik in {C}', fx:{mod:{k:'goldPct', v:-.4, m:3}, stab:-8}},
+  {t:'Vulkanausbruch in {C}', fx:{bldLoss:2, manP:-.1}},
+  {t:'{C} testet eine Atombombe', fx:{nukes:1, relA:-15}, cond:c => S.n[c].sci.includes('n2'), w:.3},
+];
+const GLOBAL_EV = [
+  {t:'Weltweite Rezession', fx:{econ:'rec'}, d:'Alle Länder: Rezession für 6 Monate.'},
+  {t:'Globaler Wirtschaftsboom', fx:{econ:'boom'}, d:'Alle Länder: Boom für 6 Monate.'},
+  {t:'Ölpreisschock', fx:{mod:{k:'goldPct', v:-.2, m:12}}, only:c => polOf(c).energy !== 'ren', d:'Alle ohne erneuerbare Energie: −20 % Gold für 12 Monate.'},
+  {t:'Weltweite Pandemie', fx:{manP:-.3, stab:-8}, d:'Alle Länder: −30 % Rekruten, −8 Stabilität.'},
+  {t:'Börsencrash an der Wall Street', fx:{goldM:-1, stab:-5}, d:'Alle Länder verlieren eine Monatseinnahme.'},
+  {t:'Sonnensturm legt Satelliten lahm', fx:{mod:{k:'fpPct', v:-.3, m:6}}, d:'Alle Länder: −30 % Forschung für 6 Monate.'},
+];
+function news(txt, cls = '') { S.news = S.news || []; S.news.push({t: S.turn, txt, cls}); if (S.news.length > 40) S.news.shift(); log('🌐 ' + txt, cls); }
+
+function pickTarget(c, kind) {
+  const nb = [...nationNeighbors(c)].filter(x => S.n[x] && S.n[x].alive);
+  const all = alive().filter(x => x !== c);
+  if (kind === 'nb') return nb.length ? pick(nb) : pick(all);
+  if (kind === 'strong') { const s = (nb.length ? nb : all).filter(x => S.cnt[x].men > S.cnt[c].men); return s.length ? pick(s) : null; }
+  if (kind === 'rich') { const r = all.filter(x => NATIONS[x].tier >= 4); return r.length ? pick(r) : pick(all); }
+  return pick(all);
+}
+function playerEvent() {
+  const c = S.player, n = S.n[c];
+  S.evSeen = S.evSeen || {};
+  const pool = EV.filter(e => (!e.cond || e.cond(c)) && S.turn - (S.evSeen[e.id] || -99) >= 30);
+  if (!pool.length) return;
+  let tot = pool.reduce((s, e) => s + (e.w || 1), 0), r = Math.random() * tot, ev = pool[0];
+  for (const e of pool) { r -= e.w || 1; if (r <= 0) { ev = e; break; } }
+  const tgt = ev.tgt ? pickTarget(c, ev.tgt) : null;
+  if (ev.tgt && !tgt) return;
+  S.evSeen[ev.id] = S.turn;
+  event({kind: 'choice', id: ev.id, tgt});
+}
+function riskTick(c) {
+  const r = risks(c), n = S.n[c];
+  for (const [k, p] of Object.entries(r)) {
+    if (Math.random() >= p) continue;
+    if (k === 'nuc') { nuclearAccident(c); return; }
+    if (!isP(c)) { if (k === 'revolution') revolutionAI(c); continue; }
+    if (k === 'revolution') { if (S.turn - (n.revT || -99) >= 12) { n.revT = S.turn; event({kind: 'revolution'}); } return; }
+    const D = {
+      gas:     {t:'Gaskrise', d:'Dein Lieferant dreht den Gashahn zu. Fabriken stehen still, Wohnungen bleiben kalt.', fx:{mod:{k:'goldPct', v:-.3, m:6}, stab:-12}},
+      smog:    {t:'Smog-Krise', d:'Eine giftige Wolke liegt über den Städten. Krankenhäuser sind überfüllt.', fx:{manP:-.3, stab:-10}},
+      dark:    {t:'Dunkelflaute', d:'Kein Wind, keine Sonne – seit zwei Wochen. Die Netze wanken.', fx:{mod:{k:'goldPct', v:-.15, m:2}, stab:-4}},
+      scandal: {t:'Medienskandal', d:'Investigative Journalisten haben enthüllt, wie Minister Aufträge verschoben haben.', fx:{stab:-10, infl:-4}},
+      strike:  {t:'Generalstreik!', d:'Arbeiter ohne Krankenversicherung legen das Land lahm. Nichts geht mehr.', fx:{mod:{k:'goldPct', v:-.8, m:3}, stab:-10}, lesson:'twoclass'},
+      coup:    {t:'Militärputsch!', d:'Panzer rollen durch die Hauptstadt. Die Generäle haben genug von der Regierung.', fx:{ideo:'mil', stab:-15, armyP:-.15}},
+      protest: {t:'Massenproteste', d:'Wehrpflichtige und Sparprogramm-Opfer gehen gemeinsam auf die Strasse. Es gibt Tote.', fx:{stab:-15, bldLoss:2}, lesson:'riots'},
+    }[k];
+    if (D) { applyFx(c, D.fx); if (D.lesson) learn(D.lesson); event({kind: 'crisis', t: D.t, d: D.d, fx: D.fx}); return; }
+  }
+}
+function learn(id) { S.lessons = S.lessons || []; if (!S.lessons.includes(id)) { S.lessons.push(id); if (isP(S.player)) ST('lessons'); } }
+function nuclearAccident(c) {
+  const n = S.n[c], cover = activeCombos(c).some(k => k.id === 'cover'), whyIds = activeCombos(c).filter(k => ['reactor', 'privnuc', 'cover'].includes(k.id)).map(k => k.id);
+  const own = []; for (let q = 0; q < S.own.length; q++) if (S.own[q] === c && S.ctl[q] === c) own.push(q);
+  if (!own.length) return;
+  const q = pick(own), mult = cover ? 2 : 1, P = G.provs;
+  const zone = [q, ...P[q].nb.filter(z => S.own[z] === c)].slice(0, cover ? 5 : 3);
+  for (const z of zone) { S.rad[z] = Math.max(S.rad[z], z === q ? 60 : 30); S.bld[z] = []; S.cons = S.cons.filter(k => k.p !== z); for (const a of S.armies) if (a.p === z) a.men = Math.round(a.men * 0.4); FXQ.push({p: z, k: z === q ? 'nuke' : 'fallout'}); }
+  S.armies = S.armies.filter(a => a.men >= 200);
+  n.stab = Math.max(0, n.stab - 25 * mult); n.gold = Math.round(n.gold * (cover ? 0.3 : 0.6)); n.man = Math.round(n.man * (1 - 0.3 * mult));
+  polOf(c).energy = 'coal'; n.polT = n.polT || {}; n.polT.energy = S.turn + 6;
+  n.mods = (n.mods || []).concat([{k: 'goldPct', v: -.3, until: S.turn + 24}]);
+  for (const x of nationNeighbors(c)) if (S.n[x] && S.n[x].alive) addRel(c, x, -25 * mult);
+  if (isP(c)) {
+    whyIds.forEach(learn); ST('meltdown');
+    event({kind: 'meltdown', p: q, cover, why: whyIds});
+  } else news(`☢ Reaktorkatastrophe in ${nm(c)} – ${P[q].name} ist verstrahlt`, 'bad');
+  recount();
+}
+function revolutionAI(c) {
+  const n = S.n[c], id = pick(NORMAL_IDEOS.filter(x => x !== n.ideo));
+  changeIdeology(c, id, S.turn, true);
+  n.stab = 45; n.gold = 0; for (const a of armiesOf(c)) a.men = Math.round(a.men * 0.65);
+  S.n[c].pol = defaultPol(c);
+  news(`Revolution in ${nm(c)}! Neue Staatsform: ${IDEOS[id].n}`, '');
+}
+function worldTick() {
+  const P = S.player;
+  // Risiken
+  riskTick(P);
+  for (const c of alive()) if (!isP(c) && (S.n[c].stab < 8 || (polOf(c).energy === 'nuc' && Math.random() < 0.15))) riskTick(c);
+  // Entscheidungs-Ereignis
+  if (S.turn > 2 && Math.random() < 0.22) playerEvent();
+  // Welt-Ereignisse
+  for (let i = 0; i < 2; i++) if (Math.random() < 0.55) {
+    const ais = alive().filter(c => !isP(c)); const c = pick(ais); if (!c) break;
+    const pool = WEV.filter(e => !e.cond || e.cond(c)); let tot = pool.reduce((s, e) => s + (e.w || 1), 0), r = Math.random() * tot, e = pool[0];
+    for (const x of pool) { r -= x.w || 1; if (r <= 0) { e = x; break; } }
+    applyFx(c, e.fx); news(e.t.replace('{C}', NATIONS[c].name));
+  }
+  if (Math.random() < 0.012) {
+    const g = pick(GLOBAL_EV);
+    for (const c of alive()) if (!g.only || g.only(c)) applyFx(c, g.fx);
+    news(g.t, 'bad');
+    event({kind: 'crisis', t: g.t, d: 'Eine weltweite Krise trifft alle Länder. ' + g.d, fx: {}});
+  }
+  // Kombinationen entdecken
+  S.comboSeen = S.comboSeen || {};
+  for (const k of activeCombos(P)) {
+    const key = k.id; S.comboAge = S.comboAge || {}; S.comboAge[key] = (S.comboAge[key] || 0) + 1;
+    if (!S.comboSeen[key] && S.comboAge[key] >= 3 && k.fx && Object.keys(k.fx).length) { S.comboSeen[key] = 1; learn(key); event({kind: 'combo', id: key}); }
+  }
+  for (const key in (S.comboAge || {})) if (!activeCombos(P).some(k => k.id === key)) S.comboAge[key] = 0;
+  // Schwäche wird ausgenutzt
+  const n = S.n[P], dv = DIFF[S.diff || 'normal'];
+  if (S.turn > 12 && (n.stab < 25 || S.cnt[P].men < 5000) && Math.random() < 0.05 * dv.agg * (polFx(P, 'neutral') ? 0.4 : 1)) {
+    const preds = [...nationNeighbors(P)].filter(x => S.n[x] && S.n[x].alive && !atWar(x, P) && !S.ally[K(x, P)] && (S.truce[K(x, P)] || 0) <= S.turn && S.cnt[x].men > S.cnt[P].men);
+    if (preds.length) { const x = pick(preds); declareWar(x, P); news(`${nm(x)} nutzt die Schwäche von ${nm(P)} aus`, 'bad'); }
+  }
 }
 /* ================= IMPERIUM · Aufträge, Ränge, Erfolge ================= */
 const RANKS = ['Stammesführer','Fürst','Herzog','König','Kaiser','Grossmacht','Weltherrscher','Legende','Halbgott','Unsterblich'];
@@ -2129,6 +2779,9 @@ const ACHS = [
   {id:'prof',   n:'Professor',           d:'Erforsche alle Wirtschafts- und Bildungsfelder', ok:() => SCI.filter(t => t.br < 2).every(t => S.n[S.player].sci.includes(t.id))},
   {id:'wunder', n:'Wirtschaftswunder',   d:'Verdiene 200 Gold pro Monat',               ok:() => S.n[S.player].ideo !== 'tec' && income(S.player).gold >= 200},
   {id:'maxed',  n:'Stadtplaner',         d:'Baue ein Gebäude auf Stufe 3 aus',          ok:() => (S.stats.maxed || 0) >= 1},
+  {id:'melt',   n:'Tschernobyl',         d:'Erlebe eine Reaktorkatastrophe',            ok:() => (S.stats.meltdown || 0) >= 1, secret:true},
+  {id:'lesson', n:'Lehrgeld',            d:'Entdecke 3 politische Kombinationen',       ok:() => (S.lessons || []).length >= 3},
+  {id:'states', n:'Staatskunst',         d:'Habe 2 Synergien gleichzeitig aktiv',       ok:() => activeCombos(S.player).filter(k => k.good).length >= 2},
   {id:'win',    n:'Weltherrschaft',      d:'Kontrolliere 20 % der Welt',                ok:() => !!S.won},
 ];
 function loadAch() { try { return JSON.parse(localStorage.getItem(ACH_KEY)) || {}; } catch (e) { return {}; } }
@@ -2230,7 +2883,7 @@ function createMapView(canvas, wrap, mode) {
       for (let q = 0; q < P.length; q++) if (S.rad[q] > 0) { const x = sx(P[q].x), y = sy(P[q].y); if (!off(x, y)) c.fillText('☢', x + 14, y + 12); }
       if (V.k > 6) {
         c.font = `${Math.min(13, V.k * 1.3)}px 'IBM Plex Mono', monospace`; c.fillStyle = 'rgba(242,245,247,.75)';
-        for (let q = 0; q < P.length; q++) if (S.bld[q]) { const x = sx(P[q].x), y = sy(P[q].y); if (!off(x, y)) c.fillText(BLD[S.bld[q]].g, x, y + 14); }
+        for (let q = 0; q < P.length; q++) { const bl = S.bld[q] || [], ck = S.cons.find(k => k.p === q); if (!bl.length && !ck) continue; const x = sx(P[q].x), y = sy(P[q].y); if (!off(x, y)) c.fillText(bl.map(z => BLD[z.b].g).join('') + (ck ? '⚒' : ''), x, y + 14); }
       }
     }
     // Ländernamen
@@ -2317,7 +2970,7 @@ function createMapView(canvas, wrap, mode) {
     for (const f of UI.flashes) {
       if (f.k === 'nuke' || f.k === 'fallout') continue;
       const x = sx(P[f.p].x), y = sy(P[f.p].y); if (off(x, y, 80)) continue;
-      const t = (now - f.t0) / 1400, col = f.k === 'win' ? '109,255,155' : f.k === 'loss' ? '255,95,86' : '255,122,61';
+      const t = (now - f.t0) / 1400, col = f.k === 'win' ? '109,255,155' : f.k === 'loss' ? '255,95,86' : f.k === 'build' ? '79,240,210' : '255,122,61';
       for (let r = 0; r < 2; r++) { const tt = clamp(t - r * 0.15, 0, 1); c.beginPath(); c.arc(x, y, 8 + tt * 46, 0, 7); c.strokeStyle = `rgba(${col},${(1 - tt) * 0.9})`; c.lineWidth = 3 * (1 - tt) + 1; c.stroke(); }
       if (f.k === 'occ' && t < .8) { c.font = "600 12px 'IBM Plex Mono', monospace"; c.fillStyle = `rgba(255,176,124,${1 - t})`; c.fillText('BESETZT', x, y - 24 - t * 20); }
       if (f.k === 'win' && t < .8) { c.font = "600 12px 'IBM Plex Mono', monospace"; c.fillStyle = `rgba(109,255,155,${1 - t})`; c.fillText('SIEG', x, y - 24 - t * 20); }
@@ -2376,8 +3029,8 @@ function createMapView(canvas, wrap, mode) {
 }
 /* ================= IMPERIUM · Oberfläche ================= */
 const $ = s => document.querySelector(s);
-const SAVE_KEY = 'imperium-save-v5';
-const UI = {pick:'CH', region:'Beliebt', q:'', tab:'prov', sel:-1, army:null, open:null, armed:null, peace:null, dq:'', ev:null, speed:0, prog:0, running:false, engaged:new Set(), mapMode:'pol', lastSpeed:2, flashes:[], mute:false};
+const SAVE_KEY = 'imperium-save-v7';
+const UI = {diff:'normal', pick:'CH', region:'Beliebt', q:'', tab:'prov', sel:-1, army:null, open:null, armed:null, peace:null, dq:'', ev:null, speed:0, prog:0, running:false, engaged:new Set(), mapMode:'pol', lastSpeed:2, flashes:[], mute:false};
 try { UI.mute = localStorage.getItem('imperium-mute') === '1'; } catch (e) {}
 const SPEED_MS = [0, 6000, 3000, 1500, 650];
 const MONTHS_LONG = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
@@ -2395,7 +3048,7 @@ const nameSort = (a, b) => NATIONS[a].name.localeCompare(NATIONS[b].name, 'de');
 
 /* ---------- Speichern ---------- */
 function save() { try { localStorage.setItem(SAVE_KEY, JSON.stringify({...S, cnt: undefined})); } catch (e) {} }
-function readSave() { try { const d = JSON.parse(localStorage.getItem(SAVE_KEY)); return d && d.v === 5 && G.ready && d.np === G.provs.length ? d : null; } catch (e) { return null; } }
+function readSave() { try { const d = JSON.parse(localStorage.getItem(SAVE_KEY)); return d && d.v === 7 && G.ready && d.np === G.provs.length ? d : null; } catch (e) { return null; } }
 
 /* ---------- Startseite ---------- */
 function renderStart() {
@@ -2436,6 +3089,7 @@ function renderPreview() {
       <div><span><span class="t-green">●</span> wohlstand</span><b>${'★'.repeat(N.tier)}<span style="color:var(--muted2)">${'★'.repeat(5 - N.tier)}</span></b></div>
       <div><span><span class="${d.label === 'SCHWER' ? 't-red' : d.label === 'MITTEL' ? 't-yellow' : 't-green'}">●</span> schwierigkeit</span><b>${d.label}</b></div>
     </div>
+    <div class="diffs">${Object.entries(DIFF).map(([k, v]) => `<button class="fchip${UI.diff === k ? ' on' : ''}" data-a="diff:${k}" title="${v.d}">${v.n}</button>`).join('')}<small>${DIFF[UI.diff].d}</small></div>
     <div class="preview-start"><button class="button primary" data-a="start" ${G.ready ? '' : 'disabled'}>${G.ready ? `Als ${esc(N.leader.split(' ')[0] === 'König' || N.leader.split(' ')[0] === 'Königin' ? N.leader : N.leader.split(' ')[0])} starten ▶` : 'Karte lädt …'}</button></div>
     <div class="scanline"></div>`;
 }
@@ -2478,7 +3132,7 @@ function ensureGameMap() {
 }
 function startGame(c) {
   if (!G.ready) return;
-  EVQ = []; newGame(c);
+  EVQ = []; newGame(c, UI.diff);
   Object.assign(UI, {sel: S.n[c].cap, army: null, tab: 'goals', open: null, armed: null, peace: null, dq: ''});
   UI.speed = 0; UI.prog = 0;
   showScreen(true); ensureGameMap(); mapv.resize(); refresh(); mapv.centerCountry(c, 0.6); save();
@@ -2510,6 +3164,7 @@ function renderBar() {
     <div title="Militärpunkte für Reformen"><span>Militär</span><strong>${tec ? inf : fmt(n.mil)}${tec ? '' : d(inc.mil)}</strong></div>
     <div title="Forschungspunkte aus Schulen"><span>Forschung</span><strong>${tec ? inf : fmt(n.fp)}${tec ? '' : `<em>+${inc.fp}</em>`}</strong></div>
     <div title="Einfluss für Diplomatie"><span>Einfluss</span><strong>${tec ? inf : fmt(n.infl)}${tec ? '' : d(inc.infl)}</strong></div>
+    <div title="Stabilität: wirkt auf Gold und Rekruten"><span>Stabilität</span><strong style="color:${n.stab >= 50 ? 'var(--green)' : n.stab >= 25 ? 'var(--yellow)' : 'var(--red)'}">${Math.round(n.stab)}</strong></div>
     <div title="Provinzen / für den Sieg nötig"><span>Provinzen</span><strong>${S.cnt[P].provs}<span style="color:var(--muted2);font-size:.75rem">/${target}</span></strong></div>`;
   $('#mapMeta').textContent = `${dateOf(S.turn).toUpperCase()} · ${enemies(P).length ? 'KRIEG' : 'FRIEDEN'}`;
   renderTime();
@@ -2542,30 +3197,43 @@ function morBar(a) { const f = clamp(a.mor / maxMor(a.o), 0, 1); return `<span c
 function sideProv() {
   const q = UI.sel, P = S.player;
   if (q < 0) return `<div class="hint"><b>Wähle eine Provinz oder Armee.</b><br>Ziehen verschiebt die Karte, Mausrad oder zwei Finger zoomen. Deine Armeen sind orange – antippen, dann auf das Ziel tippen.</div>`;
-  const pr = G.provs[q], o = S.own[q], c = S.ctl[q], b = S.bld[q], here = armiesAt(q);
+  const pr = G.provs[q], o = S.own[q], c = S.ctl[q], bl = bList(q), here = armiesAt(q), ck = consAt(q);
   let h = `<p class="kicker">Provinz · ${pr.coast ? 'Küste' : 'Binnenland'}</p><h3>${esc(pr.name)}${S.n[o] && S.n[o].cap === q ? ' <span class="accent">★</span>' : ''}</h3>
     <span class="owner">${swatch(o)}${NATIONS[o].name.toUpperCase()}${o === P ? ' · DEIN LAND' : ''}</span>${c !== o ? ` <span class="chip war">BESETZT VON ${esc(NATIONS[c].name.toUpperCase())}</span>` : ''}`;
   if (S.rad[q] > 0) h += `<div class="radbox">☢ Verstrahlt – noch ${S.rad[q]} ${pl(S.rad[q], 'Monat', 'Monate')} ohne Einnahmen, Rekruten und Gebäudewirkung.</div>`;
-  h += `<div class="kv"><div><span>Gebäude</span><b>${b ? BLD[b].g + ' ' + BLD[b].n + ' · Stufe ' + (S.lv[q] || 1) + '/3' : '—'}</b></div><div><span>Kriegswert</span><b>${pr.val}</b></div>`;
+  h += `<div class="kv"><div><span>Gebäude</span><b>${bl.length ? bl.map(x => BLD[x.b].g + x.lv).join(' ') : '—'} · ${bl.length}/${SLOTS}</b></div><div><span>Kriegswert</span><b>${pr.val}</b></div>`;
   if (S.sg[q]) h += `<div><span>Belagerung durch ${esc(NATIONS[S.sg[q].o].name)}</span><b>${S.sg[q].t} / ${siegeNeed(q, S.sg[q].o)} Monate</b></div>`;
   if (o !== P) h += `<div><span>Beziehung</span><b class="${rel(P, o) >= 0 ? 'pos' : 'neg'}">${rel(P, o) > 0 ? '+' : ''}${rel(P, o)}</b></div>`;
   h += `</div>`;
   if (here.length) h += `<h4>Armeen hier</h4><div class="alist">` + here.map(a => `<button class="army${a.id === UI.army ? ' sel' : ''}" data-a="${a.o === P ? 'army:' + a.id : 'open:' + a.o}">${swatch(a.o)}<span><b>${fmtMen(a.men)}</b><small>${esc(NATIONS[a.o].name)}${atWar(a.o, P) ? ' · FEIND' : ''}</small></span>${morBar(a)}</button>`).join('') + `</div>`;
   if (o === P && c === P) {
-    if (!b) h += `<h4>Gebäude errichten</h4><div class="opt-list">` + BKEYS.map(k => { const cost = buildCost(P, k); return `<button class="opt" data-a="build:${k}" ${S.n[P].gold < cost ? 'disabled' : ''}><span class="g">${BLD[k].g}</span><span><b>${BLD[k].n}</b><small>${BLD[k].d}</small></span><span class="cost">${cost} G</span></button>`; }).join('') + `</div>`;
-    else {
-      const lv = S.lv[q] || 1, uc = lv < 3 ? upgradeCost(P, q) : 0;
-      h += `<h4>${BLD[b].n} · Stufe ${lv}/3</h4><div class="lvl">${[1, 2, 3].map(i => `<i class="${i <= lv ? 'on' : ''}"></i>`).join('')}</div><p class="lead">${BLD[b].d}${lv > 1 ? ` – wirkt ${lv}-fach` : ''}.</p>
-        <div class="btn-row">${lv < 3 ? `<button class="button primary" data-a="upg" ${S.n[P].gold < uc || S.rad[q] > 0 ? 'disabled' : ''}>Ausbauen auf Stufe ${lv + 1} · ${uc} G</button>` : '<span class="chip ally" style="align-self:center">MAXIMAL AUSGEBAUT</span>'}
-        <button class="button ${UI.armed === 'demo' ? 'danger armed' : 'danger'}" data-a="demo">${UI.armed === 'demo' ? 'Wirklich abreissen?' : 'Abreissen'}</button></div>`;
+    const n = S.n[P], slotsFree = SLOTS - bl.length, busy = consOf(P).length >= maxCons(P);
+    h += `<h4>Gebäude · ${bl.length}/${SLOTS} Plätze</h4><div class="slots">`;
+    for (const x of bl) {
+      const B = BLD[x.b], up = ck && ck.b === x.b, uc = x.lv < 3 ? upgradeCost(P, q, x.b) : 0;
+      h += `<div class="slot"><span class="g">${B.g}</span><span><b>${B.n} · Stufe ${x.lv}/3</b><small>${B.d}${x.lv > 1 ? ` – wirkt ${x.lv}-fach` : ''}${B.up ? ` · Unterhalt ${B.up * x.lv} G/Monat` : ''}</small>
+        <span class="lvl">${[1, 2, 3].map(i => `<i class="${i <= x.lv ? 'on' : ''}"></i>`).join('')}</span>
+        ${up ? consBar(ck) : `<span class="btn-row" style="margin-top:6px">${x.lv < 3 ? `<button class="button" data-a="upg:${x.b}" ${ck || busy || n.gold < uc || S.rad[q] > 0 ? 'disabled' : ''}>Stufe ${x.lv + 1} · ${uc} G · ${buildTime(P, x.b, x.lv + 1)} Mon.</button>` : '<span class="chip ally">MAX</span>'}
+        <button class="button ${UI.armed === 'demo:' + x.b ? 'danger armed' : 'danger'}" data-a="demo:${x.b}">${UI.armed === 'demo:' + x.b ? 'Wirklich?' : 'Abreissen'}</button></span>`}</span></div>`;
     }
-    h += `<h4>Armee ausheben</h4><div class="btn-row" style="margin-top:0">` + [5000, 10000, 20000].map(m => `<button class="button" data-a="raise:${m}" ${!canRaise(P, q) || S.n[P].man < m || S.n[P].gold < raiseCost(P, m) ? 'disabled' : ''}>+${fmtMen(m)} · ${raiseCost(P, m)} G</button>`).join('') + `</div>`;
+    if (ck && ck.lv === 1) h += `<div class="slot building"><span class="g">${BLD[ck.b].g}</span><span><b>${BLD[ck.b].n} · im Bau</b>${consBar(ck)}</span></div>`;
+    for (let i = bl.length + (ck && ck.lv === 1 ? 1 : 0); i < SLOTS; i++) h += `<div class="slot empty"><span class="g">+</span><span><b>Freier Bauplatz</b></span></div>`;
+    h += `</div>`;
+    if (ck) h += `<div class="btn-row"><button class="button" data-a="cancel">Bau abbrechen (50 % zurück)</button></div>`;
+    else if (slotsFree > 0) {
+      h += `<h4>Neu bauen</h4>${busy ? `<p class="lead">Alle ${maxCons(P)} Bautrupps sind beschäftigt. Warte, bis ein Auftrag fertig ist.</p>` : ''}<div class="opt-list">` + BKEYS.filter(k => !hasB(q, k)).map(k => {
+        const cost = buildCost(P, k), B = BLD[k];
+        return `<button class="opt" data-a="build:${k}" ${n.gold < cost || busy || S.rad[q] > 0 ? 'disabled' : ''}><span class="g">${B.g}</span><span><b>${B.n}</b><small>${B.d}${B.up ? ` · Unterhalt ${B.up} G` : ''}</small></span><span class="cost">${cost} G<br>${buildTime(P, k, 1)} Mon.</span></button>`;
+      }).join('') + `</div>`;
+    }
+    h += `<h4>Armee ausheben · ${musterTime(P)} ${musterTime(P) === 1 ? 'Monat' : 'Monate'} Ausbildung</h4><div class="btn-row" style="margin-top:0">` + [5000, 10000, 20000].map(m => `<button class="button" data-a="raise:${m}" ${!canRaise(P, q) || S.n[P].man < m || S.n[P].gold < raiseCost(P, m) ? 'disabled' : ''}>+${fmtMen(m)} · ${raiseCost(P, m)} G</button>`).join('') + `</div>`;
+    const ms = S.muster.filter(m => m.c === P && m.p === q); if (ms.length) h += ms.map(m => `<div class="slot building" style="margin-top:8px"><span class="g">▲</span><span><b>${fmtMen(m.men)} in Ausbildung</b>${consBar(m)}</span></div>`).join('');
   } else if (!atWar(P, o) && !atWar(P, c) && o !== P) {
     const tr = (S.truce[K(P, o)] || 0) > S.turn;
-    h += `<div class="btn-row"><button class="button" data-a="dipto:${o}">Diplomatie ◇</button>${tr ? `<span class="chip" style="align-self:center">WAFFENSTILLSTAND ${S.truce[K(P, o)] - S.turn} MON.</span>` : `<button class="button ${UI.armed === 'war:' + o ? 'danger armed' : 'danger'}" data-a="war:${o}">${UI.armed === 'war:' + o ? 'Krieg bestätigen' : 'Krieg erklären'}</button>`}</div>`;
+    h += `<div class="btn-row"><button class="button" data-a="dipto:${o}">Diplomatie ◇</button>${fx(P, 'neutral') ? '<span class="chip" style="align-self:center">NEUTRAL · KEINE KRIEGE</span>' : tr ? `<span class="chip" style="align-self:center">WAFFENSTILLSTAND ${S.truce[K(P, o)] - S.turn} MON.</span>` : `<button class="button ${UI.armed === 'war:' + o ? 'danger armed' : 'danger'}" data-a="war:${o}">${UI.armed === 'war:' + o ? 'Krieg bestätigen' : 'Krieg erklären'}</button>`}</div>`;
     if (S.ally[K(P, o)] || S.trade[K(P, o)]) h += `<p class="lead" style="margin-top:10px">Ein Krieg bricht eure Verträge – alle Länder trauen dir danach weniger.</p>`;
   }
-  if (canNuke(P, q)) h += `<div class="nukebox"><b>☢ Atomschlag</b><p>Vernichtet ${fx(P, 'hbomb') ? '90 % der Armeen hier und 50 % in allen Nachbarprovinzen' : '90 % aller Armeen in dieser Provinz'}, zerstört Gebäude und verstrahlt das Gebiet. Die ganze Welt wird dich dafür hassen.${S.n[S.own[q]] && S.n[S.own[q]].nukes ? ` <b style="color:var(--red)">${esc(NATIONS[S.own[q]].name)} hat selbst Atomwaffen – rechne mit Vergeltung.</b>` : ''}</p>
+  if (canNuke(P, q)) h += `<div class="nukebox"><b>☢ Atomschlag</b><p>Vernichtet ${fx(P, 'hbomb') ? 'alle Armeen hier und 70 % in allen Nachbarprovinzen' : 'alle Armeen in dieser Provinz'}, zerstört Gebäude, verstrahlt das Gebiet für 5 Jahre und stürzt das Opfer ins Chaos. Die ganze Welt wird dich hassen – Nachbarn können sich gegen dich verbünden, Atommächte schlagen zweifach zurück.${S.n[S.own[q]] && S.n[S.own[q]].nukes ? ` <b style="color:var(--red)">${esc(NATIONS[S.own[q]].name)} hat selbst Atomwaffen – rechne mit Vergeltung.</b>` : ''}</p>
     <button class="button ${UI.armed === 'nuke' ? 'danger armed' : 'danger'}" data-a="nuke">${UI.armed === 'nuke' ? '☢ Abschuss bestätigen' : `☢ Sprengkopf abfeuern (${S.n[P].nukes} verfügbar)`}</button></div>`;
   // Armeen hierher schicken
   const mine = armiesOf(P).filter(a => a.p !== q);
@@ -2575,6 +3243,7 @@ function sideProv() {
   } else if (o !== P && !canEnter(P, q)) h += `<p class="lead" style="margin-top:12px">Deine Armeen dürfen nur in eigenes, verbündetes oder feindliches Gebiet (im Krieg) marschieren.</p>`;
   return h;
 }
+function consBar(k) { const f = 1 - k.left / k.total; return `<span class="cbar"><i style="width:${Math.max(4, f * 100)}%"></i></span><small>noch ${k.left} ${k.left === 1 ? 'Monat' : 'Monate'}${S.ctl[k.p] !== S.own[k.p] ? ' · pausiert (besetzt)' : ''}</small>`; }
 function sideMil() {
   const P = S.player, n = S.n[P], a = selArmy(), list = armiesOf(P);
   let h = '';
@@ -2591,18 +3260,19 @@ function sideMil() {
   h += `<h4>Deine Armeen · ${list.length}</h4><div class="alist">` + (list.map(x => `<button class="army${x.id === UI.army ? ' sel' : ''}" data-a="army:${x.id}">${swatch(P)}<span><b>${fmtMen(x.men)}</b><small>${esc(G.provs[x.p].name)} · ${armyStatus(x)}</small></span>${morBar(x)}</button>`).join('') || '<div class="hint">Keine Armee. Hebe in einer eigenen Provinz eine neue aus.</div>') + `</div>`;
   const cap = n.cap;
   h += `<h4>Neue Armee in ${cap >= 0 ? esc(G.provs[cap].name) : '—'}</h4><div class="btn-row" style="margin-top:0">` + [5000, 10000, 20000].map(m => `<button class="button" data-a="raisecap:${m}" ${cap < 0 || !canRaise(P, cap) || n.man < m || n.gold < raiseCost(P, m) ? 'disabled' : ''}>+${fmtMen(m)} · ${raiseCost(P, m)} G</button>`).join('') + `</div>
-    <p class="lead" style="margin-top:8px">Rekruten: ${fmtMen(n.man)}. Verluste werden in eigenem Gebiet automatisch aufgefüllt (3 Gold je 1000 Mann).</p>`;
+    <p class="lead" style="margin-top:8px">Rekruten: ${fmtMen(n.man)}. Neue Armeen brauchen ${musterTime(P)} ${musterTime(P) === 1 ? 'Monat' : 'Monate'} Ausbildung. Verluste werden in eigenem Gebiet aufgefüllt (5 Gold je 1000 Mann).</p>` +
+    (musterOf(P).length ? `<div class="slots" style="margin-top:8px">${musterOf(P).map(m => `<div class="slot building"><span class="g">▲</span><span><b>${fmtMen(m.men)} · ${esc(G.provs[m.p].name)}</b>${consBar(m)}</span></div>`).join('')}</div>` : '');
   const doom = S.doom || 0;
   h += `<h4>Atomwaffen</h4><div class="nukepanel"><div class="doom"><span>WELTUNTERGANGSUHR</span><b>${doom >= DOOM_MAX ? '00:00' : '23:' + String(60 - (DOOM_MAX - doom)).padStart(2, '0')}</b><div class="doombar">${Array.from({length: DOOM_MAX}, (_, i) => `<i class="${i < doom ? 'on' : ''}"></i>`).join('')}</div></div>
     ${fx(P, 'nuke') ? `<div class="kv"><div><span>Sprengköpfe</span><b>☢ ${n.nukes}</b></div><div><span>Kosten</span><b>${nukeCost(P)} Gold</b></div><div><span>Typ</span><b>${fx(P, 'hbomb') ? 'Wasserstoffbombe' : 'Atombombe'}</b></div></div>
     <div class="btn-row"><button class="button" data-a="nukebuild" ${n.gold < nukeCost(P) ? 'disabled' : ''}>☢ Sprengkopf bauen · ${nukeCost(P)} G</button></div>
     <p class="lead" style="margin-top:8px">Einsetzen: Feindliche Provinz antippen, dann «Atomschlag». Jeder Einsatz rückt die Uhr vor – um Mitternacht kommt der nukleare Winter.</p>` : `<p class="lead">Kein Atomprogramm. Erforsche im Tab Forschung Kernphysik → Urananreicherung → Atombombe.</p>`}
-    ${S.winter > S.turn ? `<div class="radbox">❄ Nuklearer Winter: noch ${S.winter - S.turn} Monate halbe Einnahmen für die ganze Welt.</div>` : ''}
+    ${S.winter > S.turn ? `<div class="radbox">❄ Nuklearer Winter: noch ${S.winter - S.turn} Monate −60 % Einnahmen für die ganze Welt.</div>` : ''}
     <p class="lead" style="margin-top:6px">Atommächte: ${alive().filter(c => S.n[c].nukes > 0).map(c => `${esc(NATIONS[c].name)} (${S.n[c].nukes})`).join(', ') || 'keine'}</p></div>`;
-  h += `<h4>Militärreformen · ${n.mil} Punkte</h4><div class="tree">` +
+  h += `<h4>Militärreformen · ${n.mil} Punkte</h4>${n.milP ? `<div class="slot building" style="margin-bottom:10px"><span class="g">⚙</span><span><b>${TECH[n.milP.id].name.replace(/­/g, '')} wird umgesetzt</b>${consBar(n.milP)}</span></div>` : '<p class="lead" style="margin-bottom:10px">Es läuft immer nur eine Reform gleichzeitig.</p>'}<div class="tree">` +
     BRANCHES.map((bn, bi) => `<div class="branch"><div class="branch-name">${bn}</div>` + TECHS.filter(t => t.br === bi).map(t => {
       const st = techState(P, t);
-      return `<button class="tech ${st}" data-a="tech:${t.id}" title="${t.d}"><b>${t.name}</b><small>${t.d}</small><span class="tc">${st === 'done' ? '✓ aktiv' : st === 'locked' ? '🔒 ' + t.cost + ' MP' : t.cost + ' MP'}</span></button>`;
+      return `<button class="tech ${st}" data-a="tech:${t.id}" title="${t.d}"><b>${t.name}</b><small>${t.d}</small><span class="tc">${st === 'done' ? '✓ aktiv' : st === 'active' ? '⚙ ' + n.milP.left + ' Mon.' : st === 'locked' ? '🔒 ' + t.cost + ' MP' : t.cost + ' MP · ' + milTime(t) + ' Mon.'}</span></button>`;
     }).join('') + `</div>`).join('') + `</div>`;
   h += `<div class="kv" style="margin-top:16px"><div><span>Angriff / Verteidigung</span><b>+${Math.round(fx(P, 'atk') * 100)} % / +${Math.round(fx(P, 'def') * 100)} %</b></div><div><span>Maximale Moral</span><b>${Math.round(maxMor(P) * 100)} %</b></div><div><span>Seereichweite</span><b>${Math.round(seaRange(P) * 40)} km${fx(P, 'naval') ? ' · ohne Malus' : ' · −30 % Moral'}</b></div></div>`;
   return h;
@@ -2611,7 +3281,20 @@ function sideGov() {
   const P = S.player, n = S.n[P], cur = n.ideo, wait = Math.max(0, IDEO_COOLDOWN - (S.turn - n.ideoT));
   const tally = {}; for (const c of alive()) tally[ideoOf(c)] = (tally[ideoOf(c)] || 0) + 1;
   const sr = schoolRank(), mine = S.cnt[P].school, top = sr[0], eligible = canTechno(P);
-  let h = `<p class="kicker">Regierung</p><h3>${IDEOS[cur].g} ${IDEOS[cur].n}</h3>`;
+  let h = `<p class="kicker">Regierung · ${IDEOS[cur].g} ${IDEOS[cur].n}</p><h3>Politische Entscheidungen</h3>
+    <p class="lead">Jede Änderung kostet ${POL_COST} Einfluss und 5 Stabilität, danach ist das Feld ${POL_COOLDOWN} Monate gesperrt. Manche Kombinationen wirken zusammen – im Guten wie im Schlechten.</p>`;
+  const pol = polOf(P);
+  for (const cat of Object.keys(POL)) {
+    const C = POL[cat], wt = Math.max(0, POL_COOLDOWN - (S.turn - ((n.polT || {})[cat] ?? -99)));
+    h += `<div class="polcat"><div class="pch"><b>${C.g} ${C.n}</b>${wt ? `<small>gesperrt · ${wt} Mon.</small>` : ''}</div><div class="polopts">` +
+      Object.entries(C.opts).map(([k, o]) => `<button class="polopt${pol[cat] === k ? ' on' : ''}" data-a="pol:${cat}:${k}" ${pol[cat] === k || !canChangePol(P, cat, k) ? (pol[cat] === k ? '' : 'disabled') : ''}><b>${o.n}</b><small>${o.d}</small></button>`).join('') + `</div></div>`;
+  }
+  const rk = Object.entries(risks(P));
+  h += `<h4>Lagebericht · Risiken</h4>` + (rk.length ? `<div class="risks">${rk.map(([k, p]) => { const [w, col] = riskWord(p); return `<div><span>${RISK_NAMES[k]}</span><b class="t-${col}">${w}</b></div>`; }).join('')}</div>` : '<p class="lead">Keine besonderen Risiken. Deine Berater sind entspannt.</p>');
+  const known = (S.lessons || []).map(id => COMBOS.find(k => k.id === id)).filter(Boolean);
+  const act = activeCombos(P).filter(k => (S.lessons || []).includes(k.id));
+  h += `<h4>Bekannte Kombinationen · ${known.length} / ${COMBOS.length}</h4>` + (known.length ? `<div class="combos">${known.map(k => `<div class="combo ${k.good ? 'good' : 'bad'}${act.includes(k) ? ' on' : ''}"><b>${k.good ? '✦' : '⚠'} ${k.n}${act.includes(k) ? ' · aktiv' : ''}</b><small>${k.d}</small></div>`).join('')}</div>` : '<p class="lead">Noch keine entdeckt. Synergien und Fallen zeigen sich erst, wenn sie dich treffen.</p>');
+  h += `<h4>Staatsform</h4>`;
   if (cur === 'anc') h += `<div class="nestle"><b>Ⓝ Alles gehört Nestlé.</b><p>Gold, Rekruten, Militärpunkte und Einfluss gehören dem Konzern. Deine Soldaten laufen davon, weil niemand sie bezahlt. In ${Math.max(0, n.ancUntil - S.turn)} ${pl(Math.max(0, n.ancUntil - S.turn), 'Monat', 'Monaten')} erhebt sich das Volk.</p></div>`;
   else if (cur !== 'tec') h += `<div class="techno${eligible ? ' ready' : ''}">
       <span class="ad">★ EMPFOHLEN · BESTE IDEOLOGIE DER WELT ★</span>
@@ -2637,10 +3320,11 @@ function sideSci() {
   const P = S.player, n = S.n[P], inc = income(P), tec = n.ideo === 'tec';
   let h = `<p class="kicker">Forschung</p><h3>${tec ? '∞' : fmt(n.fp)} Forschungspunkte</h3>
     <p class="lead">+${inc.fp} pro Monat aus ${S.cnt[P].school} Schulstufen (je ${2 + fx(P, 'schoolFP')} FP${fx(P, 'fpPct') ? `, +${Math.round(fx(P, 'fpPct') * 100)} %` : ''}). Mehr Schulen und Ausbau bringen schnellere Forschung.</p>
+    ${n.sciP ? `<div class="slot building" style="margin-top:12px"><span class="g">⚗</span><span><b>${SCIT[n.sciP.id].name.replace(/­/g, '')} wird erforscht</b>${consBar(n.sciP)}</span></div>` : '<p class="lead" style="margin-top:10px">Es läuft immer nur ein Forschungsprojekt gleichzeitig.</p>'}
     <div class="tree" style="margin-top:14px">` +
     SCI_BRANCHES.map((bn, bi) => `<div class="branch"><div class="branch-name">${bn}</div>` + SCI.filter(t => t.br === bi).map(t => {
       const st = sciState(P, t);
-      return `<button class="tech ${st}${bi === 2 ? ' atom' : ''}" data-a="sci:${t.id}" title="${t.d}"><b>${t.name}</b><small>${t.d}</small><span class="tc">${st === 'done' ? '✓ erforscht' : st === 'locked' ? '🔒 ' + t.cost + ' FP' : t.cost + ' FP'}</span></button>`;
+      return `<button class="tech ${st}${bi === 2 ? ' atom' : ''}" data-a="sci:${t.id}" title="${t.d}"><b>${t.name}</b><small>${t.d}</small><span class="tc">${st === 'done' ? '✓ erforscht' : st === 'active' ? '⚗ ' + n.sciP.left + ' Mon.' : st === 'locked' ? '🔒 ' + t.cost + ' FP' : t.cost + ' FP · ' + sciTime(t) + ' Mon.'}</span></button>`;
     }).join('') + `</div>`).join('') + `</div>`;
   const others = alive().filter(c => c !== P).sort((a, b) => S.n[b].sci.length - S.n[a].sci.length).slice(0, 5);
   h += `<h4>Führende Forschungsnationen</h4><table class="rank"><tbody>` + [P, ...others].sort((a, b) => S.n[b].sci.length - S.n[a].sci.length).map((c, k) => `<tr class="${c === P ? 'you' : ''}"><td>${k + 1}</td><td>${swatch(c)} ${esc(NATIONS[c].name)}</td><td class="r">${S.n[c].sci.length} / ${SCI.length}</td></tr>`).join('') + `</tbody></table>`;
@@ -2672,6 +3356,12 @@ function missionRow(m, big) {
   return `<div class="mission${f >= 1 ? ' done' : ''}"><div class="mt"><span>${esc(missionText(m))}</span><b>${MISSION[m.t].reach ? (m.t === 'men' ? fmtMen(pr) : fmt(pr)) : pr}/${m.t === 'men' ? fmtMen(m.need) : m.need}</b></div>
     <div class="mbar"><i style="width:${f * 100}%"></i></div>${big ? `<small>${rewardText(m.reward)} · +${m.reward.xp} XP</small>` : ''}</div>`;
 }
+function renderTicker() {
+  const el = $('#ticker'); if (!el || !S) return;
+  const items = (S.news || []).slice(-8).reverse();
+  const html = items.length ? items.map(x => `<span class="${x.cls}">${esc(x.txt)}</span>`).join('<i>◆</i>') : '<span>Ruhige Weltlage.</span>';
+  if (el._html !== html) { el._html = html; el.innerHTML = `<b>WELT</b><div class="tk"><div class="tkin">${html}<i>◆</i>${html}</div></div>`; }
+}
 function renderHUD() {
   const el = $('#mhud'); if (!el || !S) return;
   const html = `<button class="mh" data-a="hud">AUFTRÄGE · RANG ${S.lvl} ${UI.hudOpen === false ? '▸' : '▾'}</button>` + (UI.hudOpen === false ? '' : S.missions.map(m => missionRow(m, false)).join(''));
@@ -2683,7 +3373,10 @@ function sideEco() {
   const ec = S.n[P].econ && S.n[P].econ.until > S.turn ? S.n[P].econ : null;
   return `<p class="kicker">Staatskasse</p><h3>${inc.net >= 0 ? '+' : ''}${inc.net} Gold pro Monat</h3>
   ${ec ? `<div class="${ec.m > 0 ? 'boom' : 'radbox'}">${ec.m > 0 ? '📈 Wirtschaftsboom: +25 % Gold' : '📉 Rezession: −20 % Gold'} · noch ${ec.until - S.turn} Monate</div>` : ''}
-  ${inc.winter ? '<div class="radbox">❄ Nuklearer Winter: halbe Einnahmen und Rekruten.</div>' : ''}
+  ${inc.winter ? '<div class="radbox">❄ Nuklearer Winter: −60 % Einnahmen und Rekruten.</div>' : ''}
+  <h4>Stabilität · ${Math.round(S.n[P].stab)} / 100</h4><div class="stabbar"><i style="width:${S.n[P].stab}%;background:${S.n[P].stab >= 50 ? 'var(--green)' : S.n[P].stab >= 25 ? 'var(--yellow)' : 'var(--red)'}"></i></div>
+  <p class="lead">Wirkt auf Gold und Rekruten (×${inc.sm.toFixed(2)}). Sinkt durch Kriege, hohe Steuern, besetzte Provinzen, Ideologiewechsel und Eroberungen. Unter 20 drohen Unruhen, die Gebäude beschädigen.</p>
+  <h4>Bauaufträge · ${consOf(P).length} / ${maxCons(P)}</h4>${consOf(P).length ? `<div class="slots">${consOf(P).map(k => `<div class="slot building"><span class="g">${BLD[k.b].g}</span><span><b>${BLD[k.b].n}${k.lv > 1 ? ' → Stufe ' + k.lv : ''} · ${esc(G.provs[k.p].name)}</b>${consBar(k)}</span></div>`).join('')}</div>` : '<p class="lead">Keine Bauaufträge. Mehr Provinzen bringen mehr Bautrupps.</p>'}
   <h4>Verlauf · Netto-Gold</h4>${sparkline(S.hist.map(x => x.g - x.u), inc.net >= 0 ? '#6dff9b' : '#ff5f56')}
   <h4>Steuerpolitik</h4><div class="taxes">${tx('low')}${tx('mid')}${tx('high')}</div>
   <h4>Aufschlüsselung</h4>
@@ -2696,7 +3389,9 @@ function sideEco() {
     <div><span>Handelsabkommen (${tradeCount(P)})</span><b>+${tradeCount(P) * (3 + fx(P, 'tradeGold'))}</b></div>
     ${fx(P, 'goldPct') ? `<div><span>Herrscherbonus</span><b class="${fx(P, 'goldPct') > 0 ? 'pos' : 'neg'}">${fx(P, 'goldPct') > 0 ? '+' : ''}${Math.round(fx(P, 'goldPct') * 100)} %</b></div>` : ''}
     ${(S.n[P].tax || 'mid') !== 'mid' ? `<div><span>Steuern ${TAX[S.n[P].tax].n}</span><b>×${TAX[S.n[P].tax].gold}</b></div>` : ''}
-    <div><span>Armeeunterhalt (${fmtMen(c.men)} ÷ 3000)</span><b class="neg">−${inc.upkeep}</b></div>
+    <div><span>Gebäudeunterhalt</span><b class="neg">−${inc.bup}</b></div>
+    <div><span>Stabilität ${Math.round(S.n[P].stab)}</span><b class="${inc.sm >= 1 ? 'pos' : 'neg'}">×${inc.sm.toFixed(2)}</b></div>
+    <div><span>Armeeunterhalt (${fmtMen(c.men)} ÷ 2500)</span><b class="neg">−${inc.armyUp}</b></div>
     <div><span>Netto</span><b class="${inc.net >= 0 ? 'pos' : 'neg'}">${inc.net >= 0 ? '+' : ''}${inc.net} Gold</b></div>
   </div>
   <div class="kv"><div><span>Rekruten (${c.farm} Bauernhöfe)</span><b>+${fmtMen(inc.man)} · max ${fmtMen(inc.manCap)}</b></div><div><span>Militärpunkte (${c.barracks} Kasernen)</span><b>+${inc.mil}</b></div><div><span>Einfluss</span><b>+${inc.infl}</b></div></div>
@@ -2710,7 +3405,10 @@ function sideDip() {
   if (q) list = list.filter(c => normName(NATIONS[c].name + ' ' + NATIONS[c].leader).includes(q));
   list.sort((a, b) => (atWar(P, b) - atWar(P, a)) || (!!S.ally[K(P, b)] - !!S.ally[K(P, a)]) || (nb.has(b) - nb.has(a)) || nameSort(a, b));
   const shown = q ? list : list.slice(0, 40);
+  const ae = Math.round(S.ae || 0);
   let h = `<p class="kicker">Diplomatie</p><h3>Beziehungen</h3><p class="lead">${fmt(n.gold)} Gold · ${n.infl} Einfluss. Kriege und Nachbarn stehen oben.</p>
+    <div class="aebox"><div class="mt"><span>Aggressive Expansion</span><b style="color:${ae >= 35 ? 'var(--red)' : ae >= 15 ? 'var(--yellow)' : 'var(--green)'}">${ae}</b></div><div class="stabbar"><i style="width:${Math.min(100, ae / 0.6)}%;background:${ae >= 35 ? 'var(--red)' : 'var(--yellow)'}"></i></div>
+    <small>Steigt mit jeder eroberten Provinz und jedem Atomschlag, sinkt um 1 pro Monat. Ab 35 können sich deine Nachbarn zu einer <b>Koalition</b> gegen dich verbünden.</small></div>
     <input class="dsearch" id="dsearch" type="search" placeholder="Land suchen …" value="${esc(UI.dq)}" aria-label="Land suchen"><div class="nlist" style="margin-top:12px">`;
   for (const c of shown) {
     const r = rel(P, c), k = K(P, c), N = NATIONS[c], chips = [];
@@ -2737,7 +3435,7 @@ function dipActions(c) {
     ${S.trade[k] ? `<button class="button" data-a="untrade:${c}">Handel kündigen</button>` : `<button class="button" data-a="trade:${c}" ${rel(P, c) < 25 ? 'disabled' : ''}>Handelsabkommen<br><small class="muted">ab +25 · +3 Gold</small></button>`}
     ${S.ally[k] ? `<button class="button" data-a="unally:${c}">Bündnis kündigen</button>` : `<button class="button" data-a="ally:${c}" ${rel(P, c) < allyNeed(P, c) ? 'disabled' : ''}>Bündnis<br><small class="muted">ab +${allyNeed(P, c)}</small></button>`}
     <button class="button" data-a="focus:${c}">Auf Karte zeigen</button>
-    ${truce ? `<button class="button" disabled>Waffenstillstand<br><small class="muted">noch ${S.truce[k] - S.turn} Monate</small></button>` : `<button class="button ${UI.armed === 'war:' + c ? 'danger armed' : 'danger'}" data-a="war:${c}">${UI.armed === 'war:' + c ? 'Krieg bestätigen' : 'Krieg erklären'}</button>`}
+    ${fx(P, 'neutral') ? `<button class="button" disabled>Neutralität<br><small class="muted">keine Kriegserklärung</small></button>` : truce ? `<button class="button" disabled>Waffenstillstand<br><small class="muted">noch ${S.truce[k] - S.turn} Monate</small></button>` : `<button class="button ${UI.armed === 'war:' + c ? 'danger armed' : 'danger'}" data-a="war:${c}">${UI.armed === 'war:' + c ? 'Krieg bestätigen' : 'Krieg erklären'}</button>`}
   </div>`;
   const others = alive().filter(x => x !== P && x !== c).sort(nameSort);
   h += `<div class="plot"><select id="plotSel" aria-label="Intrige gegen">${others.map(x => `<option value="${x}">gegen ${esc(NATIONS[x].name)}</option>`).join('')}</select><button class="button" data-a="plot:${c}" ${n.infl < 4 ? 'disabled' : ''}>Intrige · 4 ◆</button></div>`;
@@ -2785,7 +3483,7 @@ function moveSelected(q) {
 }
 function act(a) {
   const [cmd, x, y] = a.split(':'), P = S && S.player;
-  if (!['war', 'demo', 'adisband', 'nuke'].includes(cmd)) UI.armed = null;
+  if (!['war', 'demo', 'adisband', 'nuke', 'diff'].includes(cmd)) UI.armed = null;
   switch (cmd) {
     case 'home': case 'menu': if (S && !$('#game').hidden) { setSpeed(0); save(); } showScreen(false); renderStart(); return;
     case 'choose': $('#choose').scrollIntoView({behavior: 'smooth'}); return;
@@ -2800,8 +3498,8 @@ function act(a) {
     case 'speed': setSpeed(+x); return;
     case 'mute': UI.mute = !UI.mute; try { localStorage.setItem('imperium-mute', UI.mute ? '1' : '0'); } catch (e) {} $('#muteBtn').textContent = UI.mute ? '♪̸' : '♪'; $('#muteBtn').classList.toggle('off', UI.mute); if (!UI.mute) sfx('click'); return;
     case 'hud': UI.hudOpen = UI.hudOpen === false; renderHUD(); return;
-    case 'upg': if (upgrade(P, UI.sel)) { toast('Ausgebaut', `${BLD[S.bld[UI.sel]].n} · Stufe ${S.lv[UI.sel]}`, 'ok'); sfx('coin'); } break;
-    case 'sci': if (researchSci(P, x)) { toast('Forschung', SCIT[x].name.replace(/­/g, '') + ' · ' + SCIT[x].d, 'ok'); sfx('coin'); } else return; break;
+    case 'upg': if (upgrade(P, UI.sel, x)) { toast('Ausbau begonnen', `${BLD[x].n} → Stufe ${bLv(UI.sel, x) + 1} · ${consAt(UI.sel).left} Monate`, 'ok'); sfx('click'); } break;
+    case 'sci': if (researchSci(P, x)) { toast('Forschung gestartet', `${SCIT[x].name.replace(/­/g, '')} · ${sciTime(SCIT[x])} Monate`, 'ok'); sfx('click'); } else return; break;
     case 'tax': setTax(P, x); break;
     case 'nukebuild': if (buildNuke(P)) { toast('☢ Sprengkopf', 'Einsatzbereit', 'bad'); sfx('war'); } break;
     case 'nuke': {
@@ -2809,16 +3507,19 @@ function act(a) {
       UI.armed = null; const q = UI.sel;
       if (launchNuke(P, q)) { nukeFX(); } break;
     }
+    case 'pol': if (setPolicy(P, x, y)) { toast('Neue Politik', `${POL[x].n}: ${POL[x].opts[y].n}`, 'ok'); sfx('click'); } break;
     case 'mapmode': UI.mapMode = UI.mapMode === 'ideo' ? 'pol' : 'ideo'; mapv.draw(); break;
     case 'ideo': if (changeIdeology(P, x, S.turn + UI.prog)) { toast('Neue Regierung', `${NATIONS[P].name}: ${IDEOS[x].n}`, 'ok'); if (x === 'tec') { sfx('fanfare'); confetti(innerWidth / 2, innerHeight / 3, 140, ['#4ff0d2','#ffffff','#ff7a3d']); } } break;
     case 'zin': mapv.zoom(1.4); return;
     case 'zout': mapv.zoom(1 / 1.4); return;
     case 'zhome': mapv.centerCountry(P, 0.6); return;
     case 'tab': UI.tab = x; renderSide(); return;
-    case 'build': if (build(P, UI.sel, x)) toast('Gebaut', `${BLD[x].n} in ${G.provs[UI.sel].name}`, 'ok'); break;
-    case 'demo': if (UI.armed !== 'demo') { UI.armed = 'demo'; renderSide(); return; } UI.armed = null; demolish(P, UI.sel); break;
-    case 'raise': { const ar = raiseArmy(P, UI.sel, +x); if (ar) { UI.army = ar.id; toast('Ausgehoben', `${fmtMen(+x)} in ${G.provs[UI.sel].name}`, 'ok'); } break; }
-    case 'raisecap': { const ar = raiseArmy(P, S.n[P].cap, +x); if (ar) { UI.army = ar.id; toast('Ausgehoben', `${fmtMen(+x)} in ${G.provs[S.n[P].cap].name}`, 'ok'); } break; }
+    case 'build': if (build(P, UI.sel, x)) toast('Baubeginn', `${BLD[x].n} in ${G.provs[UI.sel].name} · ${buildTime(P, x, 1)} Monate`, 'ok'); break;
+    case 'cancel': cancelCons(P, UI.sel); break;
+    case 'diff': UI.diff = x; renderPreview(); return;
+    case 'demo': if (UI.armed !== 'demo:' + x) { UI.armed = 'demo:' + x; renderSide(); return; } UI.armed = null; demolish(P, UI.sel, x); break;
+    case 'raise': { const m = raiseArmy(P, UI.sel, +x); if (m) toast('Rekrutierung', `${fmtMen(+x)} in ${G.provs[UI.sel].name} · bereit in ${m.left} Mon.`, 'ok'); break; }
+    case 'raisecap': { const m = raiseArmy(P, S.n[P].cap, +x); if (m) toast('Rekrutierung', `${fmtMen(+x)} in ${G.provs[S.n[P].cap].name} · bereit in ${m.left} Mon.`, 'ok'); break; }
     case 'army': UI.army = UI.army === +x ? null : +x; UI.tab = 'mil'; { const ar = selArmy(); if (ar) mapv.centerWorld(G.provs[ar.p].x, G.provs[ar.p].y, Math.max(mapv.V.k, 4)); } break;
     case 'adesel': UI.army = null; break;
     case 'astop': { const ar = selArmy(); if (ar) ar.path = []; break; }
@@ -2846,7 +3547,7 @@ function act(a) {
       if (ok) { UI.peace = null; if (!S.n[x].alive) UI.open = null; }
       break;
     }
-    case 'tech': if (research(P, x)) toast('Reform', TECH[x].name.replace('­', '') + ' · ' + TECH[x].d, 'ok'); else return; break;
+    case 'tech': if (research(P, x)) toast('Reform gestartet', `${TECH[x].name.replace(/­/g, '')} · ${milTime(TECH[x])} Monate`, 'ok'); else return; break;
     case 'ev': handleEvent(x); return;
   }
   refresh(); save();
@@ -2870,7 +3571,7 @@ function refresh() {
   if (UI.army != null && !selArmy()) UI.army = null;
   UI.engaged = new Set(S.armies.filter(a => hostileIn(a.o, a.p)).map(a => a.id));
   progressCheck();
-  renderBar(); renderHUD();
+  renderBar(); renderHUD(); renderTicker();
   const ae = document.activeElement;
   if (!(ae && ae.closest && ae.closest('#side') && /INPUT|SELECT/.test(ae.tagName))) renderSide();
   if (mapv) mapv.draw();
@@ -2905,7 +3606,6 @@ function tickMonth() {
   let nuked = false;
   for (const f of FXQ) { UI.flashes.push({p: f.p, k: f.k, t0: performance.now()}); if (f.k === 'nuke') nuked = true; snd = f.k === 'loss' ? 'loss' : snd || 'battle'; }
   FXQ = []; if (nuked) nukeFX(true); else if (snd) sfx(snd);
-  if (!S.tecNote && S.n[S.player].ideo !== 'tec' && S.n[S.player].ideo !== 'anc' && canTechno(S.player)) { S.tecNote = true; event({kind:'tecUnlock'}); }
   if (S.turn % 3 === 0) save();
   showEvents();
 }
@@ -2935,6 +3635,10 @@ function showEvents() {
   if ((ev.kind === 'peaceOffer' || ev.kind === 'peaceDemand') && !atWar(ev.from, S.player)) return showEvents();
   if (ev.kind === 'info' && ev.title === 'Krieg!') sfx('war');
   if (ev.kind === 'econ') sfx(ev.boom ? 'coin' : 'loss');
+  if (ev.kind === 'coalition') sfx('war');
+  if (ev.kind === 'meltdown') sfx('boom');
+  if (ev.kind === 'crisis' || ev.kind === 'revolution') sfx('loss');
+  if (ev.kind === 'choice') sfx('click');
   UI.ev = ev;
   const N = ev.from ? NATIONS[ev.from] : null, names = l => l.map(q => esc(G.provs[q].name)).join(', ');
   const head = N ? `<div style="display:flex;gap:16px;align-items:center;margin-bottom:16px">${por(ev.from, 'pv-por')}<div><p class="kicker" style="margin:0">${esc(N.name)}</p><p class="muted" style="font-size:.85rem">${esc(N.leader)}</p></div></div>` : '';
@@ -2949,8 +3653,20 @@ function showEvents() {
   else if (ev.kind === 'nestle') h = `<div class="nestle-big">Ⓝ</div><p class="kicker">Neue Staatsform</p><h2>Anarcho-Kapitalismus</h2><p><b style="color:var(--ink)">Alles gehört jetzt Nestlé.</b> Gold: 0. Rekruten: 0. Militärpunkte: 0. Einfluss: 0. Sogar das Wasser. Deine Soldaten werden nicht mehr bezahlt und laufen davon. In ${ANC_MONTHS} Monaten hat das Volk genug.</p><div class="btn-row"><button class="button primary" data-a="ev:ok">Na toll.</button></div>`;
   else if (ev.kind === 'uprising') h = `<p class="kicker">Volksaufstand</p><h2>Das Volk <span class="accent">enteignet Nestlé!</span></h2><p>Die Zeit des Konzerns ist vorbei. Wähle die neue Staatsform – diesmal kostenlos.</p><div class="dgrid" style="margin-top:18px">${NORMAL_IDEOS.map(id => `<button class="button" data-a="ev:ideo-${id}">${IDEOS[id].g} ${IDEOS[id].n}</button>`).join('')}</div>`;
   else if (ev.kind === 'nukeHit') h = `<div class="nestle-big" style="color:#ffd84a">☢</div><p class="kicker">Atomschlag</p><h2>${esc(N.name)} hat <span class="accent">${esc(G.provs[ev.p].name)}</span> nuklear getroffen.</h2><p>Armeen in der Region sind ausgelöscht, das Gebiet ist verstrahlt. ${S.n[S.player].nukes > 0 ? 'Du hast selbst Sprengköpfe – die Vergeltung liegt bei dir.' : 'Du hast keine Atomwaffen, um zurückzuschlagen.'}</p><div class="btn-row"><button class="button primary" data-a="ev:ok">Weiter</button></div>`;
-  else if (ev.kind === 'winter') h = `<div class="nestle-big" style="color:#bfe6ff">❄</div><p class="kicker">Mitternacht</p><h2>Nuklearer Winter</h2><p>Die Weltuntergangsuhr steht auf Mitternacht. Asche verdunkelt den Himmel, Ernten fallen aus. Zwei Jahre lang halbieren sich Einnahmen und Rekruten auf der ganzen Welt.</p><div class="btn-row"><button class="button primary" data-a="ev:ok">Weiter</button></div>`;
+  else if (ev.kind === 'winter') h = `<div class="nestle-big" style="color:#bfe6ff">❄</div><p class="kicker">Mitternacht</p><h2>Nuklearer Winter</h2><p>Die Weltuntergangsuhr steht auf Mitternacht. Asche verdunkelt den Himmel, Ernten fallen aus. Drei Jahre lang brechen Einnahmen und Rekruten auf der ganzen Welt um 60 % ein, die Stabilität stürzt überall ab.</p><div class="btn-row"><button class="button primary" data-a="ev:ok">Weiter</button></div>`;
   else if (ev.kind === 'econ') h = `<p class="kicker">Konjunktur</p><h2>${ev.boom ? 'Wirtschafts<span class="accent">boom!</span>' : 'Rezession'}</h2><p>${ev.boom ? 'Die Märkte laufen heiss: 6 Monate lang +25 % Gold. Jetzt ist die Zeit zu investieren.' : 'Die Wirtschaft schrumpft: 6 Monate lang −20 % Gold. Tipp: Steuern anpassen oder Ausbau verschieben.'}</p><div class="btn-row"><button class="button primary" data-a="ev:ok">Weiter</button></div>`;
+  else if (ev.kind === 'choice') {
+    const E = EV.find(e => e.id === ev.id), T = ev.tgt ? NATIONS[ev.tgt].name : '';
+    h = `${ev.tgt ? `<div style="display:flex;gap:14px;align-items:center;margin-bottom:14px">${por(ev.tgt, 'pv-por')}<div><p class="kicker" style="margin:0">${esc(T)}</p><p class="muted" style="font-size:.82rem">${esc(NATIONS[ev.tgt].leader)}</p></div></div>` : ''}<p class="kicker">Entscheidung · ${dateOf(S.turn)}</p><h2>${esc(E.t)}</h2><p>${esc(E.d.replace(/\{T\}/g, T))}</p>
+      <div class="choices">${E.o.map((o, i) => `<button class="choice" data-a="ev:opt-${i}"><b>${esc(o.t)}</b><small>${esc(fxText(o.fx, ev.tgt) || 'Keine Auswirkungen')}</small></button>`).join('')}</div>`;
+  }
+  else if (ev.kind === 'crisis') h = `<p class="kicker">Krise · ${dateOf(S.turn)}</p><h2>${esc(ev.t)}</h2><p>${esc(ev.d)}</p>${ev.fx && Object.keys(ev.fx).length ? `<div class="verdict no">${esc(fxText(ev.fx))}</div>` : ''}<div class="btn-row"><button class="button primary" data-a="ev:ok">Verstanden</button></div>`;
+  else if (ev.kind === 'meltdown') h = `<div class="nestle-big" style="color:#d8ff3c">☢</div><p class="kicker">Reaktorkatastrophe</p><h2>Kernschmelze in <span class="accent">${esc(G.provs[ev.p].name)}</span></h2><p>${ev.cover ? 'Die Behörden haben den Unfall tagelang vertuscht – die Strahlung hat sich ungehindert ausgebreitet. ' : ''}Mehrere Provinzen sind für Jahre verstrahlt, Gebäude zerstört, Soldaten verstrahlt, die Bevölkerung flieht. Alle Atomkraftwerke werden abgeschaltet – das Land fällt auf Kohle zurück.</p>
+    ${ev.why.length ? `<div class="verdict no">Deine Berater analysieren: ${ev.why.map(id => esc(COMBOS.find(k => k.id === id).d)).join(' · ')}</div>` : '<div class="verdict no">Pures Pech. Es gab keine besonderen Versäumnisse.</div>'}<div class="btn-row"><button class="button primary" data-a="ev:ok">Wiederaufbau</button></div>`;
+  else if (ev.kind === 'combo') { const k = COMBOS.find(x => x.id === ev.id); h = `<p class="kicker">${k.good ? 'Synergie entdeckt' : 'Falle erkannt'}</p><h2>${k.good ? '✦' : '⚠'} ${esc(k.n)}</h2><p>${esc(k.d)}.</p><p class="muted" style="margin-top:8px">${k.good ? 'Deine Politik greift ineinander. Behalte diese Kombination!' : 'Deine Berater haben herausgefunden, warum die Lage so schlecht ist.'}</p><div class="btn-row"><button class="button primary" data-a="ev:ok">Weiter</button></div>`; }
+  else if (ev.kind === 'revolution') h = `<p class="kicker">Revolution · ${dateOf(S.turn)}</p><h2>Das Volk <span class="accent">stürmt den Palast!</span></h2><p>Die Stabilität ist zusammengebrochen. Hunderttausende fordern deinen Rücktritt und eine neue Staatsform.</p>
+    <div class="choices"><button class="choice" data-a="ev:rev-crush"><b>Niederschlagen</b><small>${esc(fxText({armyP:-.3, stab:25, relDem:-25, ae:10}))}</small></button><button class="choice" data-a="ev:rev-yield"><b>Nachgeben</b><small>Neue Staatsform, Politik wird zurückgesetzt, Stabilität 50, halbes Gold</small></button></div>`;
+  else if (ev.kind === 'coalition') h = `<p class="kicker">Koalition</p><h2>Die Welt <span class="accent">verbündet sich</span> gegen dich.</h2><p>${ev.nuke ? 'Dein Atomschlag hat die Welt schockiert.' : 'Deine aggressive Expansion hat die Nachbarn alarmiert.'} ${ev.members.map(c => esc(NATIONS[c].name)).join(', ')} erklären dir gemeinsam den Krieg.</p><div class="btn-row"><button class="button primary" data-a="ev:ok">Zu den Waffen</button></div>`;
   else if (ev.kind === 'victory') h = `<p class="kicker">Sieg · ${dateOf(S.turn)}</p><h2>${esc(NATIONS[S.player].name)} <span class="accent">herrscht.</span></h2><p>${esc(NATIONS[S.player].leader)} kontrolliert ${S.cnt[S.player].provs} von ${G.provs.length} Provinzen. Du kannst weiterspielen oder ein neues Land wählen.</p><div class="btn-row"><button class="button primary" data-a="ev:ok">Weiterspielen</button><button class="button" data-a="ev:new">Neues Spiel</button></div>`;
   else if (ev.kind === 'defeat') h = `<p class="kicker">Niederlage · ${dateOf(S.turn)}</p><h2>Dein Land ist <span class="accent">gefallen.</span></h2><p>${esc(NATIONS[S.player].leader)} hat die letzte Provinz verloren.</p><div class="btn-row"><button class="button primary" data-a="ev:new">Neues Spiel</button><button class="button" data-a="ev:ok">Karte ansehen</button></div>`;
   $('#modalInner').innerHTML = h; $('#modal').hidden = false;
@@ -2960,6 +3676,9 @@ function handleEvent(x) {
   const ev = UI.ev, P = S.player; $('#modal').hidden = true;
   if (x === 'new') { try { localStorage.removeItem(SAVE_KEY); } catch (e) {} EVQ = []; showScreen(false); renderStart(); return; }
   if (x === 'gov') { UI.tab = 'gov'; }
+  if (x.startsWith('opt-')) { const E = EV.find(e => e.id === ev.id), o = E.o[+x.slice(4)]; const note = applyFx(P, o.fx, ev.tgt); toast(E.t, note || fxText(o.fx, ev.tgt) || 'Entschieden', note.startsWith('Es ging') ? 'bad' : 'ok'); sfx(note.startsWith('Es ging') ? 'loss' : 'click'); }
+  if (x === 'rev-crush') { applyFx(P, {armyP:-.3, stab:25, relDem:-25, ae:10}); toast('Niedergeschlagen', 'Die Ordnung ist wiederhergestellt – vorerst.', 'bad'); }
+  if (x === 'rev-yield') { const n = S.n[P], id = pick(NORMAL_IDEOS.filter(i => i !== n.ideo)); changeIdeology(P, id, S.turn, true); n.pol = defaultPol(P); n.stab = 50; n.gold = Math.round(n.gold / 2); toast('Neue Ordnung', `${NATIONS[P].name} ist jetzt ${IDEOS[id].n}`, 'ok'); }
   if (x.startsWith('ideo-')) { const n = S.n[P]; changeIdeology(P, x.slice(5), S.turn, true); n.ancEvent = false; n.gold = 100; n.infl = 5; sfx('fanfare'); toast('Befreit', `${NATIONS[P].name} ist jetzt ${IDEOS[x.slice(5)].n}.`, 'ok'); }
   if (x === 'yes') {
     if (ev.kind === 'peaceOffer' && atWar(P, ev.from)) applyPeace(ev.from, P, {[P]: ev.give}, ev.gold, ev.from);
