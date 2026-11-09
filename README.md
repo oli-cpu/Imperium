@@ -23,8 +23,6 @@ Wähle eines von 197 Ländern der heutigen Welt, regiere als dessen bekannteste 
 13. [Herrschertypen](#herrschertypen)
 14. [Aufträge, Ränge & Erfolge](#aufträge-ränge--erfolge)
 15. [Tipps für den Anfang](#tipps-für-den-anfang)
-16. [Installation auf GitHub Pages](#installation-auf-github-pages)
-17. [Technisches & Credits](#technisches--credits)
 
 ---
 
@@ -344,31 +342,6 @@ Es gibt **24 Erfolge**, einige davon **geheim**. Sie bleiben **über alle Spiele
 
 ---
 
-## Installation auf GitHub Pages
-
-Das ganze Spiel steckt in einer einzigen Datei: `index.html`.
-
-1. Neues Repository auf GitHub anlegen, z. B. `imperium`.
-2. `index.html` (und dieses `README.md`) hochladen.
-3. **Settings → Pages → Branch: `main` / Ordner `/ (root)`** → Speichern.
-4. Nach einer Minute ist das Spiel unter `https://<benutzername>.github.io/imperium/` erreichbar.
-
-**Eigene Subdomain (z. B. `imperium.studer.website`):**
-
-1. Bei GitHub unter **Settings → Pages → Custom domain** `imperium.studer.website` eintragen.
-2. Bei **Hostpoint** im DNS einen **CNAME**-Eintrag anlegen: Name `imperium` → Ziel `<benutzername>.github.io`.
-3. Sobald das Zertifikat bereit ist, bei GitHub **Enforce HTTPS** aktivieren.
-
----
-
-## Technisches & Credits
-
-- **Reines HTML, CSS und JavaScript** – kein Build-Schritt, keine Abhängigkeiten ausser Schriften und Kartendaten.
-- **Internet nötig:** Beim Start wird die Weltkarte geladen (Natural Earth über [Apache ECharts](https://echarts.apache.org/) via jsDelivr). Aus den Ländergrenzen erzeugt das Spiel selbst Hunderte von Provinzen, Nachbarschaften und Seewege.
-- **Speicherstand:** Wird automatisch im Browser gespeichert (`localStorage`), ebenso die Erfolge. Ein anderer Browser oder ein privates Fenster beginnt bei null.
-- **Porträts:** Gezeichnete Illustrationen, keine echten Bilder.
-- **Schriften:** Space Grotesk & IBM Plex Mono (Google Fonts).
-- **Design:** angelehnt an [oliver.studer.website](https://oliver.studer.website).
 
 Imperium ist ein Spass-Projekt. Ideologien, Herrscher und Ereignisse sind spielerisch vereinfacht und keine politische Wertung.
 
